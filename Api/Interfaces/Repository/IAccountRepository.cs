@@ -1,0 +1,7 @@
+using Api.Models.DbModel;
+using Api.Repository;
+
+namespace Api.Interfaces.Repository; 
+
+public interface IAccountRepository : IRepositoryBase<Account> {
+}

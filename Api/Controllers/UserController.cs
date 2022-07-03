@@ -1,4 +1,4 @@
-using Api.Models;
+using Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers; 
@@ -19,14 +19,16 @@ public class UserController : ControllerBase {
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create() {
+    public async Task<IActionResult> Create(UserRequest user) {
+        await _userService.CreateUser(user);
         return Ok();
     }
 }
 
-public interface IUserService {
-    User GetUser();
-}
-public class UserService : IUserService {
-    public User GetUser() { return new User(); }
+public class UserRequest {
+    public string Username { get; set; }
+    public string Password { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string EmailAddress { get; set; }
 }

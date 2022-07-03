@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Api.Migrations
 {
     [DbContext(typeof(BmpDbContext))]
-    [Migration("20220703163919_AccountUser")]
-    partial class AccountUser
+    [Migration("20220703191203_IntialCreate")]
+    partial class IntialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,25 +39,37 @@ namespace Api.Migrations
                     b.ToTable("AccountUser");
                 });
 
-            modelBuilder.Entity("Api.Models.Account", b =>
+            modelBuilder.Entity("Api.Models.DbModel.Account", b =>
                 {
                     b.Property<Guid>("AccountId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("character varying(60)");
+
+                    b.Property<string>("Plan")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("AccountId");
 
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("Api.Models.User", b =>
+            modelBuilder.Entity("Api.Models.DbModel.User", b =>
                 {
                     b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("DateActivated")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid>("DefaultAccount")
                         .HasMaxLength(36)
@@ -68,7 +80,8 @@ namespace Api.Migrations
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -76,7 +89,7 @@ namespace Api.Migrations
                         .HasColumnType("character varying(25)");
 
                     b.Property<DateTime>("LastActive")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -90,18 +103,18 @@ namespace Api.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("AccountUser", b =>
                 {
-                    b.HasOne("Api.Models.Account", null)
+                    b.HasOne("Api.Models.DbModel.Account", null)
                         .WithMany()
                         .HasForeignKey("AccountsAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Api.Models.User", null)
+                    b.HasOne("Api.Models.DbModel.User", null)
                         .WithMany()
                         .HasForeignKey("UsersUserId")
                         .OnDelete(DeleteBehavior.Cascade)

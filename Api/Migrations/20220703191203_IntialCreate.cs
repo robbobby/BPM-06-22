@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Api.Migrations
 {
-    public partial class AccountUser : Migration
+    public partial class IntialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,10 @@ namespace Api.Migrations
                 name: "Accounts",
                 columns: table => new
                 {
-                    AccountId = table.Column<Guid>(type: "uuid", nullable: false)
+                    AccountId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(60)", maxLength: 60, nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Plan = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -21,22 +24,22 @@ namespace Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     Password = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     FirstName = table.Column<string>(type: "character varying(25)", maxLength: 25, nullable: false),
                     LastName = table.Column<string>(type: "character varying(25)", maxLength: 25, nullable: false),
-                    EmailAddress = table.Column<string>(type: "text", nullable: false),
+                    EmailAddress = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     DefaultAccount = table.Column<Guid>(type: "uuid", maxLength: 36, nullable: false),
-                    DateActivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    LastActive = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    LastActive = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Disabled = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,9 +59,9 @@ namespace Api.Migrations
                         principalColumn: "AccountId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AccountUser_User_UsersUserId",
+                        name: "FK_AccountUser_Users_UsersUserId",
                         column: x => x.UsersUserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -78,7 +81,7 @@ namespace Api.Migrations
                 name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }

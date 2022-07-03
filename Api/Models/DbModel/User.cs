@@ -9,9 +9,9 @@ public class User : IDbModel {
     public List<Account> Accounts { get; set; }
     [StringLength(50)]
     public string Password { get; set; }
-    [StringLength(25)]
+    [StringLength(100)]
     public string FirstName { get; set; }
-    [StringLength(25)]
+    [StringLength(100)]
     public string LastName { get; set; }
     [Required(ErrorMessage = "Email is required")]
     [StringLength(100, ErrorMessage = "Email cannot be longer than 100 characters")]

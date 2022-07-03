@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Api.Models.DbModel;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,4 +12,9 @@ public class BmpDbContext : DbContext {
     public BmpDbContext(DbContextOptions<BmpDbContext> options) : base(options) {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
+    
+    public async Task Migrate() {
+        await Database.MigrateAsync();
+    }
+    
 }

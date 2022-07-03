@@ -29,8 +29,8 @@ namespace Api.Migrations
                 {
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     Password = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    FirstName = table.Column<string>(type: "character varying(25)", maxLength: 25, nullable: false),
-                    LastName = table.Column<string>(type: "character varying(25)", maxLength: 25, nullable: false),
+                    FirstName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     EmailAddress = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     DefaultAccount = table.Column<Guid>(type: "uuid", maxLength: 36, nullable: false),
                     DateCreated = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),

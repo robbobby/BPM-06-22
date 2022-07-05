@@ -24,11 +24,26 @@ public class UserService : IUserService {
 
     public User GetUser() { return new User(); }
     public async Task CreateUser(UserRequest userRequest) {
-        User? user = _mapper.Map<User>(userRequest);
-        user.Accounts = new List<Account>();
-        user.Accounts.Add(new Account());
-        _logger.LogInformation($"Creating user : {user.EmailAddress}");
+        var user = _mapper.Map<User>(userRequest);
+        
+        user.Salt = BCrypt.Net.BCrypt.GenerateSalt(8);
+        user.Password = BCrypt.Net.BCrypt.HashPassword(userRequest.Password, user.Salt);
+        
+        user.AccountUsers = new List<AccountUser>();
+        var account = new Account();
+        user.AccountUsers.Add(new AccountUser {
+            Account = account,
+            User = user,
+            Role = "Admin"
+        });
+
+        user.DefaultAccount = account.Id;
+        
         _userDb.Create(user);
+        _userDb.SaveChanges();
+        
+        user.DefaultAccount = account.Id;
+        _userDb.Update(user);
         _userDb.SaveChanges();
     }
 }

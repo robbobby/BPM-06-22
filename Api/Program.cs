@@ -1,3 +1,4 @@
+using Api.Controllers;
 using Api.Interfaces;
 using Api.Interfaces.Repository;
 using Api.Repository;
@@ -20,6 +21,8 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 DbSetup.SetDbContext(builder);
 

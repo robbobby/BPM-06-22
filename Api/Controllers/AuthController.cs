@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers; 
 
+[Route("api/[controller]/[action]")]
 public class AuthController : ControllerBase {
     private readonly ITokenService _tokenService;
     private readonly ILogger<AuthController> _logger;
@@ -15,7 +16,7 @@ public class AuthController : ControllerBase {
         _authService = authService;
     }
     
-    [HttpPost("api/auth/login")]
+    [HttpPost()]
     public async Task<IActionResult> Login([FromBody] ILoginRequestModel loginRequestModel) {
         try {
             var user = await _authService.Login(loginRequestModel.Email, loginRequestModel.Password);
@@ -28,7 +29,7 @@ public class AuthController : ControllerBase {
             string token = await _tokenService.GenerateToken(user);
             _logger.LogInformation($"Token generated for user {user?.EmailAddress}");
             _logger.LogInformation($"Token: {token}");
-            return Ok(user);
+            return Ok(token);
         } catch (Exception ex) {
             _logger.LogError($"Exception: {ex}");
             return BadRequest();

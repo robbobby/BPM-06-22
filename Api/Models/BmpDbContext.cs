@@ -7,7 +7,8 @@ public class BmpDbContext : DbContext {
     public DbSet<Account> Accounts { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<AccountUser> AccountUsers { get; set; }
-    
+    public DbSet<Token> Tokens { get; set; }
+
 
     public string DbPath { get; }
 

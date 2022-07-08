@@ -29,7 +29,7 @@ public class TokenService : ITokenService {
         var tokenDescriptor = new SecurityTokenDescriptor {
             Subject = new ClaimsIdentity(new Claim[] {
                 new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName),
-                new Claim(ClaimTypes.Role, "User"),
+                new Claim(ClaimTypes.Role, "Admin"),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim("Account" , user.DefaultAccount.ToString()),
             }),

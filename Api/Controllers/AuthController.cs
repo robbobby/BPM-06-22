@@ -24,8 +24,7 @@ public class AuthController : ControllerBase {
             
             if (user == null) 
                 return Unauthorized();
-            
-            
+
             string token = await _tokenService.GenerateToken(user);
             _logger.LogInformation($"Token generated for user {user?.EmailAddress}");
             _logger.LogInformation($"Token: {token}");

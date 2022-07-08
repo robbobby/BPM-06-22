@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text;
 using Api.Interfaces;
 using Api.Interfaces.Repository;
@@ -11,14 +12,10 @@ using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
-    
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
@@ -69,8 +66,13 @@ builder.Services.AddAuthorization(options => {
 });
 
 builder.Services.AddAuthorization(options => {
-    options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
-    options.AddPolicy("User", policy => policy.RequireClaim("User"));
+    options.AddPolicy("User", policy => {
+        policy.RequireAssertion(context => {
+            return context.User.HasClaim(claim => claim.Type == ClaimTypes.Role && claim.Value == "Admin") 
+                || context.User.HasClaim(claim => claim.Type == ClaimTypes.Role && claim.Value == "User");
+        });
+    });
+    options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
     options.AddPolicy("Guest", policy => policy.RequireClaim("Guest"));
     options.AddPolicy("AdminOrUser", policy => policy.RequireClaim("Admin", "User"));
 });

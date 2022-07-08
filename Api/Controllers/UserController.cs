@@ -14,16 +14,6 @@ public class UserController : ControllerBase {
         _userService = userService;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     [Authorize(Policy = "User")]
     [HttpGet]
     public async Task<IActionResult> User() {
@@ -39,20 +29,6 @@ public class UserController : ControllerBase {
         _logger.LogInformation($"User token: {token}");
         return Ok();
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     [AllowAnonymous]
     [HttpPost]

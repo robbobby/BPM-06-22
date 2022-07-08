@@ -14,12 +14,22 @@ public class UserController : ControllerBase {
         _userService = userService;
     }
     
-    [Authorize(Roles = "Admin")]
+    [Authorize(Policy = "User")]
     [HttpGet]
     public async Task<IActionResult> User() {
+        var token = Request.Headers.Authorization;
+        _logger.LogInformation($"User token: {token}");
         return Ok();
     }
-
+    
+    [Authorize(Policy = "Admin")]
+    [HttpGet]
+    public async Task<IActionResult> AdminProtectedUser() {
+        var token = Request.Headers.Authorization;
+        _logger.LogInformation($"User token: {token}");
+        return Ok();
+    }
+    
     [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Create(UserRequest user) {

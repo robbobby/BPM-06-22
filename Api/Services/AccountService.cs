@@ -6,7 +6,7 @@ namespace Api.Services;
 public class AccountService : IAccountService {
     public Account GetNewAccount() {
         return new Account {
-            AccountId = new Guid(),
+            Id = new Guid(),
             DateCreated = DateTime.Now,
             Plan = "free"
         };

@@ -5,10 +5,11 @@ namespace Api.Models.DbModel;
 
 public class User : IDbModel {
     [Key]
-    public Guid UserId { get; set; } = new Guid();
-    public List<Account> Accounts { get; set; }
-    [StringLength(50)]
+    public Guid Id { get; set; } = new Guid();
+    public List<AccountUser> AccountUsers { get; set; }
+    [StringLength(100)]
     public string Password { get; set; }
+    public string Salt { get; set; }
     [StringLength(100)]
     public string FirstName { get; set; }
     [StringLength(100)]

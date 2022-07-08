@@ -15,13 +15,10 @@ public class AuthService : IAuthService {
 
     public async Task<User?> Login(string loginModelEmail, string loginModelPassword) {
         var user = await _userRepository.GetUserByEmail(loginModelEmail);
-        return user;
         if (user == null) 
             return null;
-        
         if (!CheckHashedPassword(loginModelPassword, user.Salt, user.Password))
             return null;
-        
         return user;
     }
 

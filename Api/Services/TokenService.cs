@@ -25,13 +25,12 @@ public class TokenService : ITokenService {
         var audience = _config.GetSection("JWT").GetValue<string>("JWT_AUDIENCE");
         
         var jwtSecret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configJwtSecret));
-         
+
         var tokenDescriptor = new SecurityTokenDescriptor {
             Subject = new ClaimsIdentity(new Claim[] {
-                new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName),
-                new Claim(ClaimTypes.Role, "User"),
+                new Claim(ClaimTypes.Role, user.AccountUsers[0].Role),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim("Account" , user.DefaultAccount.ToString()),
+                new Claim("Account", user.AccountUsers[0].AccountId.ToString()),
             }),
             Expires = DateTime.UtcNow.AddHours(1),
             Issuer = issuer,

@@ -1,4 +1,5 @@
 using Api.Interfaces;
+using Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers; 
@@ -8,7 +9,6 @@ public class AuthController : ControllerBase {
     private readonly ITokenService _tokenService;
     private readonly ILogger<AuthController> _logger;
     private readonly IAuthService _authService;
-    private readonly IConfiguration _config;
 
     public AuthController(ILogger<AuthController> logger, IAuthService authService, ITokenService tokenService) {
         _tokenService = tokenService;
@@ -17,17 +17,24 @@ public class AuthController : ControllerBase {
     }
     
     [HttpPost()]
-    public async Task<IActionResult> Login([FromBody] ILoginRequestModel loginRequestModel) {
+    public async Task<IActionResult> Login([FromBody] LoginRequestModel loginRequestModel) {
         try {
-            var user = await _authService.Login(loginRequestModel.Email, loginRequestModel.Password);
-            _logger.LogInformation("User {UserEmailAddress} logged in", user?.EmailAddress);
-            
+            var user = await _authService.Login(loginRequestModel.EmailAddress, loginRequestModel.Password);
             if (user == null) 
                 return Unauthorized();
 
-            string token = await _tokenService.GenerateToken(user);
-            _logger.LogInformation("Token generated for user {UserEmailAddress}", user?.EmailAddress);
-            _logger.LogInformation("Token: {Token}", token);
+            var token = await _tokenService.GetToken<TokenDto>(user);
+            return Ok(token);
+        } catch (Exception ex) {
+            _logger.LogError("Exception: {Ex}", ex);
+            return BadRequest();
+        }
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequestModel refreshTokenRequestModel) {
+        try {
+            var token = await _tokenService.GetRefreshedToken(refreshTokenRequestModel);
             return Ok(token);
         } catch (Exception ex) {
             _logger.LogError("Exception: {Ex}", ex);
@@ -36,7 +43,12 @@ public class AuthController : ControllerBase {
     }
 }
 
-public class ILoginRequestModel {
-    public string Email { get; set; }
+public class RefreshTokenRequestModel {
+    public string AccessToken { get; set; }
+    public string RefreshToken { get; set; }
+}
+
+public class LoginRequestModel {
+    public string EmailAddress { get; set; }
     public string Password { get; set; }
 }

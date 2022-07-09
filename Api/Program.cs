@@ -1,7 +1,9 @@
+using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using Api.Interfaces;
 using Api.Interfaces.Repository;
+using Api.MapperProfiles;
 using Api.Repository;
 using Api.Services;
 using Api.Setup;
@@ -29,8 +31,6 @@ builder.Services.AddSwaggerGen(options => {
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
-        // BearerFormat = "JWT",
-        // Scheme = "Bearer",
     });
     
     options.DocInclusionPredicate((docName, description) => true);
@@ -41,10 +41,14 @@ builder.Services.AddSwaggerGen(options => {
 builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAccountUserRepository, AccountUserRepository>();
+builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).Assembly });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options => {
@@ -94,6 +98,13 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseStaticFiles();
+
+// enable cors
+app.UseCors(corsPolicyBuilder => corsPolicyBuilder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+);
 
 app.UseHttpsRedirection();
 

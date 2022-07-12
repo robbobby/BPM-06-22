@@ -14,7 +14,6 @@ namespace Api.Services;
 
 public class TokenService : ITokenService {
 
-    private readonly IConfiguration _config;
     private readonly ILogger<TokenService> _logger;
     private readonly ITokenRepository _tokenRepository;
     private readonly IMapper _mapper;
@@ -23,14 +22,13 @@ public class TokenService : ITokenService {
     private readonly SymmetricSecurityKey _jwtSecret;
 
     public TokenService(IConfiguration config, ILogger<TokenService> logger, ITokenRepository tokenRepository, IMapper mapper) {
-        _config = config;
         _logger = logger;
         _tokenRepository = tokenRepository;
         _mapper = mapper;
 
-        var configJwtSecret = _config.GetSection("JWT").GetValue<string>("JWT_SECRET");
-        _issuer = _config.GetSection("JWT").GetValue<string>("JWT_ISSUER");
-        _audience = _config.GetSection("JWT").GetValue<string>("JWT_AUDIENCE");
+        var configJwtSecret = config.GetSection("JWT").GetValue<string>("JWT_SECRET");
+        _issuer = config.GetSection("JWT").GetValue<string>("JWT_ISSUER");
+        _audience = config.GetSection("JWT").GetValue<string>("JWT_AUDIENCE");
         _jwtSecret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configJwtSecret));
     }
 
@@ -114,10 +112,6 @@ public class TokenService : ITokenService {
         
         if (token == null) 
             throw new Exception("Invalid token");
-        _logger.LogError("*******************************************************************************************");
-        _logger.LogError("Time now: " + DateTime.Now.ToString());
-        _logger.LogError("Tokennow: " + token.ExpirationDate.ToString());
-        _logger.LogError("*******************************************************************************************");
         var accessTokenExpiryDate = new JwtSecurityTokenHandler().ReadJwtToken(token.AccessToken).ValidTo; 
         if (accessTokenExpiryDate < DateTime.UtcNow) {
             return _mapper.Map<TokenDto>(await RefreshToken(token));

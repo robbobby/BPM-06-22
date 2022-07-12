@@ -1,0 +1,17 @@
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background-color: hotpink;
+  font-weight: 600;
+  top: 0;
+  min-height: 60px;
+
+  a > img {
+    position: absolute;
+    margin-top: -95px;
+    margin-left: -161px;
+    transform: scale(0.3);
+    float: left;
+  }
+}

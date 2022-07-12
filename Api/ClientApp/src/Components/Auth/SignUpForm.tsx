@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FormEvent, SyntheticEvent, useState } from 'react';
+import { FormEvent } from 'react';
 
 interface Props {
   setLoginView: (loginView: boolean) => void;
@@ -11,7 +11,7 @@ interface SignUpRequest {
   password: string;
 }
 
-export function SignUpView(props: Props) {
+export function SignUpForm(props: Props) {
   const handleSignUpRequest = (event: FormEvent<HTMLFormElement>) => {
     console.log(event.currentTarget.email.value);
     console.log(event.currentTarget.password.value);

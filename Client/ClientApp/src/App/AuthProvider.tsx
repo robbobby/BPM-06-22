@@ -27,6 +27,10 @@ export default function AuthProvider(props: any) {
     );
 }
 
+export function LogOut() {
+    localStorage.removeItem('user');
+}
+
 export function SetToken(token: TokenResponse) {
     const jwtValues = jwtDecode<TokenValues>(token.accessToken);
 

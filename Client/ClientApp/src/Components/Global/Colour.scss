@@ -24,31 +24,41 @@ $c-tint: #fbfbff;
 
 $c-dark-nav-background: #2b2a2a;
 $c-light-nav-background: white;
-$c-darkgrey: #2e2e2e;
-$c-darkgrey-contrast: #1f1d1f;
-$c-midgrey: #595959;
-$c-lightgrey: #c4c7c9;
-$c-homepage-grey: #cfcfcf;
+$c-grey-dark: #2e2e2e;
+$c-grey-dark-contrast: #1f1d1f;
+$c-grey-mid: #595959;
+$c-grey-light: #c4c7c9;
+$c-grey-homepage: #cfcfcf;
+
 $c-black: #2a2929;
+
 $c-blue: #60c9da;
-$c-midblue: #547f99;
-$c-darkblue: #212f47;
+$c-blue-mid: #547f99;
+$c-blue-dark: #212f47;
+$c-blue-bold: #0069d9;
+
+$c-darkMode-red-deep: #FF160C;
+$c-lightMode-red-deep: #CC1100;
 
 $c-green: #769e2dff;
-$c-midgreen: #479c8d;
-$c-darkgreen: #25444f;
+$c-green-mid: #479c8d;
+$c-green-dark: #25444f;
+
+$c-yellow: #f9b822;
+$c-yellow-mid: #E0A800;
+$c-yellow-dark: #9c7f00;
 
 $c-orange: #e05c24;
-$c-lightorange: #e4aa4d;
+$c-orange-light: #e4aa4d;
 
 $c-purple: #762766;
-$c-darkpurple: #762766;
+$c-purple-dark: #762766;
 
 $c-pink: #e64278;
 
 $themes: (
         nav-background: (
-                darkTheme: $c-darkgrey-contrast,
+                darkTheme: $c-grey-dark-contrast,
                 lightTheme: $c-light-nav-background,
         ),
         page-background: (

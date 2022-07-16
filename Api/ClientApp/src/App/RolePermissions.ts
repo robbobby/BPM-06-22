@@ -1,6 +1,6 @@
 export default class RolePermissions {
   private static readonly Admin: { [key: string]: boolean } = {
-    Admin: false,
+    Admin: true,
     User: true,
     Guest: true,
   }

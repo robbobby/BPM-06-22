@@ -1,6 +1,8 @@
 import axios from "axios";
 import React from 'react';
 import jwtDecode from 'jwt-decode';
+import { SetToken, TokenResponse } from "../../App/AuthProvider";
+import { Card } from "../Card/Card";
 
 interface UserLoginResponseBody {
   accessToken?: string;
@@ -13,10 +15,6 @@ interface Props {
   setLoginView: (loginView: boolean) => void;
 }
 
-interface TokenResponse {
-  accessToken: string;
-  refreshToken: string;
-}
 
 interface TokenValues {
   role: string,
@@ -24,25 +22,15 @@ interface TokenValues {
 }
 
 export function LoginForm(props: Props) {
+  console.log(localStorage.getItem('user'));
   const handleLoginRequest = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     axios.post(`${process.env.REACT_APP_API_URL}/api/Auth/Login`, {
       emailAddress: event.currentTarget.email.value,
       password: event.currentTarget.password.value
     }).then((res: { data: TokenResponse }) => {
-      const jwtValues = jwtDecode<TokenValues>(res.data.accessToken);
-      
-      const user: UserLoginResponseBody = {
-        accessToken: res.data.accessToken,
-        refreshToken: res.data.refreshToken,
-        accessTokenExpiration: jwtValues.exp,
-        role: jwtValues.role
-      }
-
-      localStorage.setItem("user", JSON.stringify(user));
-      
-      return res.data;
-      })
+      SetToken(res.data);
+    })
       .catch(err => {
         console.log(err);
       });
@@ -50,6 +38,8 @@ export function LoginForm(props: Props) {
   return (
     <div>
       <h1>Login</h1>
+      <Card>
+        <div>
       <form onSubmit={handleLoginRequest}>
         <div>
           <label>Email</label>
@@ -62,6 +52,8 @@ export function LoginForm(props: Props) {
         <button type="submit">Login</button>
         <button onClick={() => props.setLoginView(false)}>Sign Up</button>
       </form>
+        </div>
+      </Card>
     </div>
   );
 }

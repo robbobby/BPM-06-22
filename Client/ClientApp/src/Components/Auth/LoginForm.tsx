@@ -1,40 +1,32 @@
 import axios from "axios";
-import React from 'react';
-import jwtDecode from 'jwt-decode';
 import { SetToken, TokenResponse } from "../../App/AuthProvider";
 import { Card } from "../Card/Card";
-
-interface UserLoginResponseBody {
-  accessToken?: string;
-  refreshToken?: string;
-  accessTokenExpiration?: number;
-  role: string;
-}
+import { useNavigate } from "react-router-dom";
+import { FormEvent } from "react";
+import { ApiReq } from "../Hooks/ApiReq";
+import {AxiosResponse} from "axios";
 
 interface Props {
   setLoginView: (loginView: boolean) => void;
 }
 
-
-interface TokenValues {
-  role: string,
-  exp: number
-}
-
 export function LoginForm(props: Props) {
-  console.log(localStorage.getItem('user'));
-  const handleLoginRequest = (event: React.FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate();
+  
+  const handleLoginRequest = (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
-    axios.post(`${process.env.REACT_APP_API_URL}/api/Auth/Login`, {
+    ApiReq("/api/auth/login", "post", {
       emailAddress: event.currentTarget.email.value,
       password: event.currentTarget.password.value
-    }).then((res: { data: TokenResponse }) => {
+    }).then((res: AxiosResponse<TokenResponse> ) => {
       SetToken(res.data);
+      navigate('/dashboard');
     })
       .catch(err => {
         console.log(err);
       });
   }
+  
   return (
     <div>
       <h1>Login</h1>

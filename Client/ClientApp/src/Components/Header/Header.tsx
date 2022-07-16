@@ -1,12 +1,13 @@
 import Style from './Header.module.scss';
+import { ThemeButton } from "../ThemeButton/ThemeButton";
 
 export function Header() {
-  // return header with a nav bar and a logo
   return (
     <div className={Style.header}>
       <div className={Style.logo}>
           Robs new Gravity
       </div>
+      <ThemeButton/>
       <nav className={Style.nav}>
         <ul >
           <li>

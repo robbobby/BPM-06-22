@@ -4,6 +4,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{B59AFA53-0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{7DAAEC65-EC59-458E-AFD9-0FC091C13739}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{5D5A7C33-C76B-4DC4-8271-DA0750D5E2F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{D2FEF0CC-F311-45E3-A47B-8A9B94DA94AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -11,11 +15,17 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7DAAEC65-EC59-458E-AFD9-0FC091C13739} = {B59AFA53-055A-4996-A730-1A8BC313E6B1}
+		{5D5A7C33-C76B-4DC4-8271-DA0750D5E2F8} = {B59AFA53-055A-4996-A730-1A8BC313E6B1}
+		{D2FEF0CC-F311-45E3-A47B-8A9B94DA94AF} = {5D5A7C33-C76B-4DC4-8271-DA0750D5E2F8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7DAAEC65-EC59-458E-AFD9-0FC091C13739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7DAAEC65-EC59-458E-AFD9-0FC091C13739}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DAAEC65-EC59-458E-AFD9-0FC091C13739}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DAAEC65-EC59-458E-AFD9-0FC091C13739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2FEF0CC-F311-45E3-A47B-8A9B94DA94AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2FEF0CC-F311-45E3-A47B-8A9B94DA94AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2FEF0CC-F311-45E3-A47B-8A9B94DA94AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2FEF0CC-F311-45E3-A47B-8A9B94DA94AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

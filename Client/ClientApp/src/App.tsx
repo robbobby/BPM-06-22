@@ -1,12 +1,13 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import AuthProvider, { PrivateRoute } from './App/AuthProvider';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "./Components/Header/Header";
 
 const routeConfigs = [
   ...require('./Routes/AccountRoutes').default,
-  ...require('./Routes/AuthRoutes').default
+  ...require('./Routes/AuthRoutes').default,
+  ...require('./Routes/Routes').default
 ];
 
 function App() {

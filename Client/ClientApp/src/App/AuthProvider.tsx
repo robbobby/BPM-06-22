@@ -36,9 +36,7 @@ export function SetToken(token: TokenResponse) {
         accessTokenExpiration: jwtValues.exp,
         role: jwtValues.role
     }
-
     localStorage.setItem("user", JSON.stringify(user));
-
 }
 
 export function PrivateRoute(props: PrivateRouteProps) {

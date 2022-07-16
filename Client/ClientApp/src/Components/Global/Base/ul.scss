@@ -1,0 +1,45 @@
+@import '../../global.scss';
+
+
+ul {
+li {
+  a {
+    color: var(--font-color);
+  }
+
+  a:hover {
+    color: var(--a-hover-text);
+    background-color: var(--a-hover-background);
+  }
+}
+
+}
+
+$themes: (
+        a-hover-text: (
+                darkTheme: $c-blue,
+                lightTheme: $c-orange,
+        ),
+        a-hover-background: (
+                darkTheme: $c-darkblue,
+                lightTheme: $c-lightorange,
+        ),
+);
+
+@mixin styles($mode) {
+  @each $key, $map in $themes {
+    @each $prop, $color in $map {
+      @if $prop == $mode {
+        --#{$key}: #{$color};
+      }
+    }
+  }
+}
+
+.dark-mode {
+  @include styles("darkTheme");
+}
+
+.light-mode {
+  @include styles("lightTheme");
+}

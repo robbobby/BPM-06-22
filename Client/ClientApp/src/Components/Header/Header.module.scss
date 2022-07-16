@@ -11,7 +11,6 @@
   border-top: 1px solid $c-border;
   top: 0;
   min-height: $scale4;
-  transition: all 0.3s ease-in-out;
   
 
   a > img {
@@ -46,7 +45,6 @@
   }
 
   li a:hover {
-    transition: all 0.3s ease-in-out;
   }
     padding: 0 20px;
 }

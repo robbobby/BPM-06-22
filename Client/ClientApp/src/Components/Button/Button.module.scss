@@ -1,0 +1,82 @@
+@import "../Global";
+
+.base {
+  border-radius: $radius;
+  font-size: $scale-1;
+  font-weight: 400;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  border: blue 1px solid;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.transparent {
+  background-color: transparent;
+  color: var(--font-color);
+}
+
+.primary {
+  background-color: var(--button-primary-background-color);
+  color: var(--button-primary-font-color);
+}
+
+.secondary {
+  background-color: var(--button-secondary-background-color);
+  color: var(--button-secondary-font-color);
+}
+
+.success {
+  background-color: var(--button-success-background-color);
+  color: var(--button-success-font-color);
+}
+
+.danger {
+  background-color: var(--button-danger-background-color);
+  color: var(--button-danger-font-color);
+}
+
+.warning {
+  background-color: var(--button-warning-background-color);
+  color: var(--button-warning-font-color);
+}
+
+.info {
+  background-color: var(--button-info-background-color);
+  color: var(--button-info-font-color);
+}
+
+.link {
+  background-color: transparent;
+  color: var(--link-color);
+  border: 0;
+
+  &:hover {
+    color: $c-grey-light;
+    text-decoration: underline;
+  }
+}
+
+.small {
+    font-size: $scale-2;
+}
+.medium {
+  font-size: $scale-1
+}
+
+.large {
+  @media (min-width: $mobile) {
+    font-size: $scale1;
+  }
+}
+.extra-large {
+  @media (min-width: $mobile) {
+    font-size: $scale2;
+  }
+}

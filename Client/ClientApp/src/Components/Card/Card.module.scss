@@ -6,7 +6,7 @@
   z-index: 1;
   margin-bottom: $scale2;
   border-radius: $radius;
-  background-color: (rgb(33, 31, 33));
+  //background-color: (rgb(33, 31, 33));
   color: white;
 
   > h2 {
@@ -24,7 +24,7 @@
 }
 
 .borderDarkPurple {
-  border: 3px solid $c-darkpurple;
+  border: 3px solid $c-purple-dark;
 }
 
 .borderOrange {
@@ -32,7 +32,7 @@
 }
 
 .borderLightOrange {
-  border: 3px solid $c-lightorange;
+  border: 3px solid $c-orange-light;
 }
 
 .borderGreen {
@@ -40,11 +40,11 @@
 }
 
 .borderMidGreen {
-  border: 3px solid $c-midgreen;
+  border: 3px solid $c-green-mid;
 }
 
 .borderDarkGreen {
-  border: 3px solid $c-darkgreen;
+  border: 3px solid $c-green-dark;
 }
 
 .borderBlue {
@@ -52,11 +52,11 @@
 }
 
 .borderMidBlue {
-  border: 3px solid $c-midblue;
+  border: 3px solid $c-blue-mid;
 }
 
 .borderDarkBlue {
-  border: 3px solid $c-darkblue;
+  border: 3px solid $c-blue-dark;
 }
 
 .header {

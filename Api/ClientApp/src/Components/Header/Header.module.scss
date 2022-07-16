@@ -1,0 +1,55 @@
+@import "../Global";
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background-color: $c-nav-background;
+  font-weight: 600;
+  border-bottom: 1px solid $c-border;
+  border-top: 1px solid $c-border;
+  top: 0;
+  min-height: $scale4;
+  
+
+  a > img {
+    position: absolute;
+    margin-top: -95px;
+    margin-left: -161px;
+    transform: scale(0.3);
+    float: left;
+  }
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  ul {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    //background-color: $c-nav-background;
+  }
+
+  li {
+    float: right;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    padding: 4px 16px;
+    text-decoration: none;
+  }
+
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    transition: all 0.3s ease-in-out;
+    background-color: $c-darkgrey-contrast;
+  }
+    padding: 0 20px;
+}

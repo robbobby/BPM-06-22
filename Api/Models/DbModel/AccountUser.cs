@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Api.Models.DbModel; 
 
-public class AccountUser {
+public class AccountUser : IDbModel {
     [Key, Column(Order = 0)]
     public Guid AccountId { get; set; }
     [Key, Column(Order = 1)]

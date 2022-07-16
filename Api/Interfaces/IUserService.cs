@@ -6,6 +6,7 @@ namespace Api.Interfaces;
 
 public interface IUserService {
     User GetUser();
-    Task<string> CreateUser(UserRequest userRequest);
+    Task<TokenDto> CreateUser(UserRequest userRequest);
     bool ValidateToken(string token);
+    Task<List<Guid>> GetAllUserAccountIds(string? userId);
 }

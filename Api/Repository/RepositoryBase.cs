@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using Api.Models;
 using Api.Models.DbModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Api.Repository; 
 
@@ -25,8 +26,8 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class, ID
         _dbContext.Set<T>().Add(entity);
     }
 
-    public void Update(T entity) {
-        _dbContext.Set<T>().Update(entity);
+    public T Update(T entity) {
+        return _dbContext.Set<T>().Update(entity).Entity;
     }
 
     public void Delete(T entity) {

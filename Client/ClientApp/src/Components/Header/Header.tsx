@@ -2,7 +2,7 @@ import Style from './Header.module.scss';
 import { ThemeButton } from "../ThemeButton/ThemeButton";
 import { LogOut } from "../../App/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import Button, { ButtonVariant } from "../Button/Button";
+import Button, { ButtonSize, ButtonVariant } from "../Button/Button";
 
 export function Header() {
   const navigate = useNavigate();
@@ -15,26 +15,24 @@ export function Header() {
     <div className={Style.header}>
       <div className={Style.logo}>
           Levity
-      </div>
+      </div>*
       <ThemeButton/>
       <nav className={Style.nav}>
         <ul >
-          {!localStorage.getItem('user') ?
-            <li>
-              <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => navigate("/login")}>Login</Button>
-            </li>
-            : 
-            <li>
-              <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => signOut()}>Sign out</Button>
-            </li>
-          }
           <li>
-            <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => navigate("/about")}>About</Button>
+            <Button variant={ButtonVariant.Link} size={ButtonSize.Large} style={{minWidth: "auto"}} onClick={() => navigate("/about")}>About</Button>
           </li>
           
           <li>
-            <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => navigate("/contact")}>Contact</Button>
+            <Button variant={ButtonVariant.Link} size={ButtonSize.Large} style={{minWidth: "auto"}} onClick={() => navigate("/contact")}>Contact</Button>
             
+          </li>
+          <li>
+          {!localStorage.getItem('user') ?
+              <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => navigate("/login")}>Login</Button>
+            :
+              <Button variant={ButtonVariant.Link} size={ButtonSize.Large} style={{minWidth: "auto"}} onClick={() => signOut()}>Sign out</Button>
+          }
           </li>
         </ul>
       </nav>

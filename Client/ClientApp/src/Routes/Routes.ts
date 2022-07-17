@@ -1,5 +1,8 @@
 import { DashboardView } from "../Views/DashboardView";
 import { AppLayoutView } from "../Views/Layout/AppLayoutView";
+import { TodoView } from "../Views/TodoView";
+import AccountView from "../Views/AccountView";
+import { BacklogView } from "../Views/BacklogView";
 
 export default [
   {
@@ -8,4 +11,22 @@ export default [
     permission: 'User',
     title: 'Dashboard',
   },
+  {
+    path: '/todo',
+    view: TodoView,
+    permission: 'User',
+    title: 'Todo',
+  },
+  {
+    path: '/backlog',
+    view: BacklogView,
+    permission: 'User',
+    title: 'Backlog',
+  },
+  {
+    path: '/account',
+    view: AccountView,
+    permission: 'User',
+    title: 'Account',
+  }
 ]

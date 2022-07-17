@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fisch0920/use-dark-mode": "^2.4.0",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -57,7 +55,6 @@
     "nan": "^2.14.2"
   },
   "scripts": {
-    "prestart": "node aspnetcore-https && node aspnetcore-react",
     "start-old": "rimraf ./build && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -32,6 +32,7 @@ $c-grey-homepage: #cfcfcf;
 
 $c-black: #2a2929;
 
+$c-blue-light: #F5FCFF;
 $c-blue: #60c9da;
 $c-blue-mid: #547f99;
 $c-blue-dark: #212f47;
@@ -59,7 +60,7 @@ $c-pink: #e64278;
 $themes: (
         nav-background: (
                 darkTheme: $c-grey-dark-contrast,
-                lightTheme: $c-light-nav-background,
+                lightTheme: $c-blue,
         ),
         page-background: (
                 darkTheme: $c-dark-nav-background,

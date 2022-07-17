@@ -2,7 +2,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  position: fixed;
   width: 100%;
   z-index: 999;
   background-color: var(--nav-background);
@@ -24,9 +23,14 @@
 
 .nav {
     display: flex;
-    justify-content: space-between;
     width: 100%;
   ul {
+    // algin to the right
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    
+    
     width: 100%;
     list-style-type: none;
     margin: 0;

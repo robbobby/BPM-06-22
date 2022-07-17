@@ -1,5 +1,8 @@
 import axios from "axios";
 import { FormEvent } from 'react';
+import Button, { ButtonSize } from "../Button/Button";
+import { Card } from "../Card/Card";
+import Style from "./Auth.module.scss";
 
 interface Props {
   setLoginView: (loginView: boolean) => void;
@@ -33,19 +36,23 @@ export function SignUpForm(props: Props) {
   return (
     <div>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSignUpRequest}>
-        <div>
-          <label>Email</label>
-          <input type="text" name="email"/>
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="password" name="password"
-          />
-        </div>
-        <button type="submit">Sign Up</button>
-        <button onClick={() => props.setLoginView(true)}>Login</button>
-      </form>
+      <Card>
+        <form onSubmit={handleSignUpRequest}>
+          <div>
+            <label>Email</label>
+            <input type="text" name="email"/>
+          </div>
+          <div>
+            <label>Password</label>
+            <input type="password" name="password"
+            />
+          </div>
+          <span className={Style.buttonContainer}>
+            <Button size={ButtonSize.Small} type="submit">Sign up</Button>
+            <Button size={ButtonSize.Small} onClick={() => props.setLoginView(true)}>Login</Button>
+          </span>
+        </form>
+      </Card>
     </div>
   );
 }

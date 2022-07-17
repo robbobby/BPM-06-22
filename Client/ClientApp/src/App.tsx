@@ -29,10 +29,10 @@ function App() {
   }
 
   return (
-    <div className="App-header">
+    <div>
       <AuthProvider>
         <BrowserRouter>
-          <Header/>
+          {/*<Header/>*/}
           <Routes>
             {getRoutes()}
           </Routes>

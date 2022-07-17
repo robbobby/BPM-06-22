@@ -8,13 +8,17 @@
   text-align: center;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
-  width: 100%;
+  min-width: 200px;
+  width: auto;
   border: blue 1px solid;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 
   &:hover {
     cursor: pointer;
   }
+}
+
+.boxShadow {
+    box-shadow: 0 0 0 1px $c-border;
 }
 
 .transparent {

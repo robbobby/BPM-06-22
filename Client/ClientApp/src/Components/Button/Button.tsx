@@ -1,12 +1,12 @@
 import React from "react";
 import Style from '../Button/Button.module.scss';
-import { useTheme } from "../Hooks/UseTheme";
 
 export default function Button(props: ButtonProps) {
   const style = [
     Style.base,
+    props.variant !== ButtonVariant.Link && !props.boxShadow ? Style.boxShadow : "",
     props.color ? Style[props.color] : "",
-    props.variant ? Style[props.variant] : Style[ButtonBackgroundColor.Primary],
+    props.variant ? Style[props.variant] : Style[ButtonVariant.Primary],
     props.size ? Style[props.size] : "",
   ]
   
@@ -19,11 +19,12 @@ export default function Button(props: ButtonProps) {
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  variant?: ButtonBackgroundColor;
+  variant?: ButtonVariant;
   size?: ButtonSize;
+  boxShadow?: boolean;
 }
 
-export enum ButtonBackgroundColor {
+export enum ButtonVariant {
   Primary = "primary",
   Secondary = "secondary",
   Success = "success",

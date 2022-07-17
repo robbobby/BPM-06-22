@@ -1,7 +1,8 @@
 import Style from './Header.module.scss';
 import { ThemeButton } from "../ThemeButton/ThemeButton";
-import AuthProvider, { LogOut } from "../../App/AuthProvider";
+import { LogOut } from "../../App/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import Button, { ButtonVariant } from "../Button/Button";
 
 export function Header() {
   const navigate = useNavigate();
@@ -13,25 +14,27 @@ export function Header() {
   return (
     <div className={Style.header}>
       <div className={Style.logo}>
-          Robs new Gravity
+          Levity
       </div>
       <ThemeButton/>
       <nav className={Style.nav}>
         <ul >
           {!localStorage.getItem('user') ?
             <li>
-              <a href="login">Signin</a>
+              <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => navigate("/login")}>Login</Button>
             </li>
             : 
             <li>
-              <button onClick={() => signOut()}>Signout</button>
+              <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => signOut()}>Sign out</Button>
             </li>
           }
           <li>
-            <a href="about">About</a>
+            <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => navigate("/about")}>About</Button>
           </li>
+          
           <li>
-            <a href="contact">Contact</a>
+            <Button variant={ButtonVariant.Link} style={{minWidth: "auto"}} onClick={() => navigate("/contact")}>Contact</Button>
+            
           </li>
         </ul>
       </nav>

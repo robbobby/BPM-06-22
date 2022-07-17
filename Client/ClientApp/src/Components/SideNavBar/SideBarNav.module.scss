@@ -1,0 +1,59 @@
+@import '../Global';
+
+.sidebar {
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: var(--nav-background);
+  transition: all 300ms ease-out;
+  overflow: hidden;
+  border-right: 1px solid hotpink;
+}
+
+.sidebar.active {
+  width: 50px;
+}
+
+.sidebar ul {
+}
+
+.sidebar li {
+  list-style: none;
+}
+.sidebar li a {
+  font-size: $scale1;
+  text-decoration: none;
+  padding: $scale-4;
+  display: block;
+}
+
+.hamburger {
+  // css to algin the hamburger icon to the right of the sidebar
+  border: none;
+  outline: 0;
+  width: 50px;
+  background-color: var(--nav-background);
+  transition: all 300ms ease-out;
+}
+
+.hamburger:after,
+.hamburger:before,
+.hamburger div {
+  background-color: #fff;
+  height: 5px;
+  margin: 7px 0;
+  border-radius: 3px;
+  content: "";
+  display: block;
+  transition: all 300ms ease-in-out;
+}
+
+.sidebar.active .hamburger:before {
+  transform: translateY(12px) rotate(180deg);
+}
+.sidebar.active .hamburger::after {
+  transform: translateY(-12px) rotate(-180deg);
+}
+.sidebar.active .hamburger div {
+  transform: scale(0);
+}

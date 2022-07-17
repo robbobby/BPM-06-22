@@ -15,13 +15,21 @@
 
 import React from "react";
 import Style from "./Card.module.scss";
-import PropTypes from "prop-types";
 
-export function Card(props: any) {
-  const cardStyle = Style.base + Style.borderBlue;
-
+export function Card(props: Props) {
+  
+  const style = [
+    Style.base,
+    props.shadow ? Style.boxShadow : "",
+    props.center ? Style.center : "",
+    props.noPadding ? Style.noPadding : "",
+    props.restrictWidth ? Style.restrictWidth : "",
+    props.borderColour ? Style[`border${props.borderColour}`] : "",
+  ]
+  
+  
   return (
-    <section className={`${Style.base} ${Style.borderPurple}`}>
+    <section className={style.join(" ")}>
       {/*{props.logo ? <img className={Style.logo} src={contxtLogo} /> : null}*/}
       {props.title && (
         <header className={Style.header}>
@@ -35,11 +43,27 @@ export function Card(props: any) {
   );
 }
 
-Card.propTypes = {
-  border: PropTypes.string,
-  logo: PropTypes.bool,
-  shadow: PropTypes.string,
-  loading: PropTypes.bool,
-  noPadding: PropTypes.bool,
-  restrictWidth: PropTypes.bool,
+interface Props {
+  center?: boolean;
+  title?: string,
+  borderColour?: CardBorderColour,
+  logo?: boolean,
+  shadow?: boolean,
+  loading?: boolean,
+  noPadding?: boolean,
+  restrictWidth?: boolean,
+  children?: React.ReactNode
 };
+
+export enum CardBorderColour {
+  Purple = "Purple",
+  DarkPurple = "DarkPurple",
+  Orange = "Orange",
+  LightOrange = "LightOrange",
+  Green = "Green",
+  MidGreen = "MidGreen",
+  DarkGreen = "DarkGreen",
+  Blue = "Blue",
+  MidBlue = "MidBlue",
+  DarkBlue = "DarkBlue",
+}

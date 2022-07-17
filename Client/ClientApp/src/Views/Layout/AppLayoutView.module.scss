@@ -1,0 +1,6 @@
+// 2 column flexbox layout
+.AppLayoutView {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}

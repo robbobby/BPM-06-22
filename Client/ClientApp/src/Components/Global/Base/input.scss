@@ -1,0 +1,52 @@
+@import '../../Global';
+
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  color: black;
+  padding: $scale-2;
+  display: block;
+  border-radius: 8px;
+  background-color: var(--input-background-color);
+  -webkit-appearance: none;
+  position: relative;
+  font-family: inherit;
+  font-size: $scale-2;
+}
+
+$themes: (
+        input-background-color: (
+                darkTheme: $c-grey-dark-contrast,
+                lightTheme: $c-blue-light,
+        ),
+        page-background: (
+                darkTheme: $c-dark-nav-background,
+                lightTheme: $c-light-nav-background,
+        ),
+        font-color: (
+                darkTheme: white,
+                lightTheme: black
+        ),
+        font-color-hover: (
+                darkTheme: $c-dark-nav-background,
+                lightTheme: $c-dark-nav-background,
+        ),
+);
+
+@mixin styles($mode) {
+  @each $key, $map in $themes {
+    @each $prop, $color in $map {
+      @if $prop == $mode {
+        --#{$key}: #{$color};
+      }
+    }
+  }
+}
+
+.dark-mode {
+  @include styles("darkTheme");
+}
+
+.light-mode {
+  @include styles("lightTheme");
+}

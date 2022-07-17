@@ -45,7 +45,6 @@
 .sidebar li a {
   font-size: $scale1;
   text-decoration: none;
-  //padding: $scale-4;
   display: inline;
   white-space: nowrap;
   a:hover {
@@ -59,7 +58,6 @@ a:hover{
 }
 
 .hamburger {
-  // css to algin the hamburger icon to the right of the sidebar
   border: none;
   outline: 0;
   width: 50px;

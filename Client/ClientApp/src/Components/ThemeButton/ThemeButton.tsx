@@ -13,7 +13,7 @@ export function ThemeButton() {
                       checked={darkMode.value}
                       size={50}
                       sunColor={"orange"}
-                      moonColor={"blue"}/> 
+                      moonColor={"blue"}/>
     </div>
   );
 }

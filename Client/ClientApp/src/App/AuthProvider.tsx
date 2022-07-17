@@ -3,6 +3,7 @@ import { createContext, useState } from 'react';
 import { Navigate } from "react-router-dom";
 import RolePermissions from "./RolePermissions";
 import jwtDecode from "jwt-decode";
+import { AppLayoutView } from "../Views/Layout/AppLayoutView";
 
 export const AuthContext = React.createContext({});
 export default function AuthProvider(props: any) {
@@ -45,14 +46,21 @@ export function SetToken(token: TokenResponse) {
 
 export function PrivateRoute(props: PrivateRouteProps) {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const layout = props.layout || "App";
     if(RolePermissions.permissions[user.role][props.permission]) {
-        return props.view;
+        switch (layout) { 
+            case 'App':
+                return <AppLayoutView view={props.view}/>;
+            default:
+                throw new Error(`Unknown layout: ${layout}`);
+        }
     } else {
         return <Navigate to="/login"/>;
     }
 }
 
 interface PrivateRouteProps {
+    layout: string;
     view: JSX.Element
     permission: string
 }

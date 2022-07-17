@@ -6,5 +6,6 @@ export default [
     view: AccountView,
     permission: 'Admin',
     title: 'Account',
+    layout: 'App'
   }
 ]

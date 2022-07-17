@@ -8,10 +8,4 @@ export default [
     permission: 'User',
     title: 'Dashboard',
   },
-  {
-    path: '/appLayout',
-    view: AppLayoutView,
-    permission: 'User',
-    title: 'App Layout',
-  }
 ]

@@ -9,8 +9,8 @@ export function ThemeButton() {
 
   return (
     <div style={{padding: "10px"}}>
-      <DarkModeSwitch onChange={() => {}}
-                      checked={true}
+      <DarkModeSwitch onChange={darkMode.toggle}
+                      checked={darkMode.value}
                       size={50}
                       sunColor={"orange"}
                       moonColor={"blue"}/>

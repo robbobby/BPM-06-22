@@ -20,4 +20,3 @@ export function AppLayoutView(props: Props) {
 interface Props {
   view : JSX.Element
 }
-

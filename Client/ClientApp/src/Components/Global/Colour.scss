@@ -66,6 +66,10 @@ $themes: (
                 darkTheme: $c-dark-nav-background,
                 lightTheme: $c-light-nav-background,
         ),
+        page-background-04alpha: (
+                darkTheme: rgba($c-dark-nav-background, 0.4),
+                lightTheme: rgba($c-light-nav-background, 0.4),
+        ),
         font-color: (
                 darkTheme: white,
                 lightTheme: black

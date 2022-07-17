@@ -11,24 +11,53 @@
 }
 
 .sidebar.active {
-  width: 50px;
+  width: 70px;
+  li {
+    width: 50px;
+    transition: width 400ms ease-out;
+  }
 }
 
 .sidebar ul {
-}
+  padding: 3px;
+  overflow: hidden;
+  }
 
 .sidebar li {
+  padding: $scale-4;
   list-style: none;
+  width: 90%;
+  vertical-align: middle;
+  display: inline-block;
+  line-height: $scale-4;
+  span {
+    vertical-align: 8px;
+    padding: $scale;
+  }
 }
+
+.sidebar li:hover {
+  background-color: var(--page-background-04alpha);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 .sidebar li a {
   font-size: $scale1;
   text-decoration: none;
-  padding: $scale-4;
-  display: block;
+  display: inline;
+  white-space: nowrap;
+  a:hover {
+    transition: all 20s ease-out;
+    color: black;
+  }
+}
+
+a:hover{
+  background-color: transparent !important;
 }
 
 .hamburger {
-  // css to algin the hamburger icon to the right of the sidebar
   border: none;
   outline: 0;
   width: 50px;
@@ -51,9 +80,32 @@
 .sidebar.active .hamburger:before {
   transform: translateY(12px) rotate(180deg);
 }
+
 .sidebar.active .hamburger::after {
   transform: translateY(-12px) rotate(-180deg);
 }
+
 .sidebar.active .hamburger div {
   transform: scale(0);
+}
+
+.iconContainer {
+  width: 50px;
+}
+
+.selected {
+  background-color: var(--page-background);
+  border-radius: 20px;
+  vertical-align: top;
+}
+
+.navText {
+  background-color: hotpink;
+  margin-top: -10px;
+}
+
+.linkContainer {
+  background-color: hotpink;
+  width: 200px !important;
+  display: inline-block;
 }

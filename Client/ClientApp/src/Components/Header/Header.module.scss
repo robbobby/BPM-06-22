@@ -4,12 +4,12 @@
   justify-content: space-between;
   width: 100%;
   z-index: 999;
-  background-color: var(--nav-background);
+  background-color: $theme-nav-background;
   font-weight: 600;
-  border-bottom: 1px solid $c-border;
-  border-top: 1px solid $c-border;
+  box-shadow: 0px 10px 10px rgba(black, 0.05);
   top: 0;
   min-height: $scale4;
+  position: fixed;
   
 
   a > img {

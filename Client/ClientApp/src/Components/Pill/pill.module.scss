@@ -1,0 +1,110 @@
+@import '../Global';
+
+.base {
+  border: solid 1px;
+  border-radius: 10px;
+  padding: 0.2em 0.5em;
+  font-weight: 600;
+}
+
+.darkgrey {
+  border-color: $c-grey-dark;
+  color: $c-grey-dark;
+  box-shadow: 0px 0px 5px 0px rgba($c-grey-dark, 0.5);
+}
+
+.midgrey {
+  border-color: $c-grey-mid;
+  color: $c-grey-mid;
+  box-shadow: 0px 0px 8px 0px rgba($c-grey-mid, .9);
+}
+
+.lightgrey {
+  border-color: $c-grey-light;
+  color: $c-grey-light;
+  box-shadow: 0px 0px 8px 0px rgba($c-grey-light, .9);
+}
+
+.black {
+  border-color: $c-black;
+  color: $c-black;
+  box-shadow: 0px 0px 8px 0px rgba($c-black, .9);
+}
+
+.blue {
+  border-color: $c-blue;
+  color: $c-blue;
+  box-shadow: 0px 0px 8px 0px rgba($c-blue, .9);
+}
+
+.midblue {
+  border-color: $c-blue-mid;
+  color: $c-blue-mid;
+  box-shadow: 0px 0px 8px 0px rgba($c-blue-mid, .9);
+}
+
+.darkblue {
+  border-color: $c-blue-dark;
+  color: $c-blue-dark;
+  box-shadow: 0px 0px 8px 0px rgba($c-blue-dark, .9);
+}
+
+.green {
+  border-color: $c-green;
+  color: $c-green;
+  box-shadow: 0px 0px 8px 0px rgba($c-green, .9);
+}
+
+.midgreen {
+  border-color: $c-green-mid;
+  color: $c-green-mid;
+  box-shadow: 0px 0px 8px 0px rgba($c-green-mid, .9);
+}
+
+.darkgreen {
+  border-color: $c-green-dark;
+  color: $c-green-dark;
+  box-shadow: 0px 0px 8px 0px rgba($c-green-dark, .9);
+}
+
+.orange {
+  border-color: $c-orange;
+  color: $c-orange;
+  box-shadow: 0px 0px 8px 0px rgba($c-orange, .9);
+}
+
+.lightorange {
+  border-color: $c-orange-light;
+  color: $c-orange-light;
+  box-shadow: 0px 0px 8px 0px rgba($c-orange-light, .9);
+}
+
+.purple {
+  border-color: $c-purple;
+  color: $c-purple;
+  box-shadow: 0px 0px 8px 0px rgba($c-purple, .9);
+}
+
+.darkpurple {
+  border-color: $c-purple-dark;
+  color: $c-purple-dark;
+  box-shadow: 0px 0px 8px 0px rgba($c-purple-dark, .9);
+}
+
+.pink {
+  border-color: $c-pink;
+  color: $c-pink;
+  box-shadow: 0px 0px 8px 0px rgba($c-pink, .9);
+}
+
+.large {
+  font-size: 1.5em;
+}
+
+.medium {
+  font-size: 1.2em;
+}
+
+.small {
+  font-size: 0.8em;
+}

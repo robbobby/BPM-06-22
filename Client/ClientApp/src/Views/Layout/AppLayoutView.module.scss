@@ -4,3 +4,18 @@
   flex-direction: row;
   min-height: 100vh;
 }
+
+.pageWithNavExpanded {
+  margin-top: 70px;
+  margin-left: 270px;
+  
+  width: 100%;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.pageWithNavNotExpanded {
+  margin-left: 70px;
+  margin-top: 70px;
+  width: 100%;
+  transition: margin-left 0.2s ease-in-out;
+}

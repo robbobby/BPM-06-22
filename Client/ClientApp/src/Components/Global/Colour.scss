@@ -22,7 +22,7 @@ $c-red: #d95565;
 
 $c-tint: #fbfbff;
 
-$c-dark-nav-background: #2b2a2a;
+$c-dark-nav-background: #2d2d2c;
 $c-light-nav-background: white;
 $c-grey-dark: #2e2e2e;
 $c-grey-dark-contrast: #1f1d1f;
@@ -30,13 +30,21 @@ $c-grey-mid: #595959;
 $c-grey-light: #c4c7c9;
 $c-grey-homepage: #cfcfcf;
 
+$c-charcoal-dark: #2d2d2c;
+$c-charcoal: #273E47;
+
 $c-black: #2a2929;
 
-$c-blue-light: #F5FCFF;
-$c-blue: #60c9da;
+$c-blue-light: #9BBDF9;
+$c-blue: #67aaf9;
 $c-blue-mid: #547f99;
 $c-blue-dark: #212f47;
 $c-blue-bold: #0069d9;
+
+$c-cyan-light: #00bcd4;
+$c-cyan: #00acc1;
+$c-cyan-mid: #0097a7;
+$c-cyan-dark: #3C787E;
 
 $c-darkMode-red-deep: #FF160C;
 $c-lightMode-red-deep: #CC1100;
@@ -46,37 +54,138 @@ $c-green-mid: #479c8d;
 $c-green-dark: #25444f;
 
 $c-yellow: #f9b822;
+$c-yellow-light: #FFF94F;
 $c-yellow-mid: #E0A800;
 $c-yellow-dark: #9c7f00;
+
+$c-bronze: #c0a062;
+$c-bronze-dark: #D58936;
 
 $c-orange: #e05c24;
 $c-orange-light: #e4aa4d;
 
 $c-purple: #762766;
-$c-purple-dark: #762766;
+$c-purple-dark: #241623;
 
-$c-pink: #e64278;
+
+$c-pink: #F0386B;
+
+$c-mulberry: #F95F89;
+$c-mulberry-dark: #9b0f6f;
+
+// page settings
+$theme-nav-background: var(--nav-background);
+$theme-page-background: var(--page-background);
+$theme-font-colour: var(--font-colour);
+
+// button settings
+$theme-button-primary-bg-colour: var(--button-primary-background-colour);
+$theme-button-secondary-bg-colour: var(--button-secondary-background-colour);
+$theme-button-success-bg-colour: var(--button-success-background-colour);
+$theme-button-danger-bg-colour: var(--button-danger-background-colour);
+$theme-button-warning-bg-colour: var(--button-warning-background-colour);
+$theme-button-info-bg-colour: var(--button-info-background-colour);
+
+$theme-button-primary-bg-colour: var(--button-primary-background-colour);
+$theme-button-secondary-bg-colour: var(--button-secondary-background-colour);
+$theme-button-success-bg-colour: var(--button-success-background-colour);
+$theme-button-danger-bg-colour: var(--button-danger-background-colour);
+$theme-button-warning-bg-colour: var(--button-warning-background-colour);
+$theme-button-info-bg-colour: var(--button-info-background-colour);
+$theme-button-link-bg-colour: var(--button-link-background-colour);
+
+$theme-button-primary-text-colour: var(--button-primary-text-colour);
+$theme-button-secondary-text-colour: var(--button-secondary-text-colour);
+$theme-button-success-text-colour: var(--button-success-text-colour);
+$theme-button-danger-text-colour: var(--button-danger-text-colour);
+$theme-button-warning-text-colour: var(--button-warning-text-colour);
+$theme-button-info-text-colour: var(--button-info-text-colour);
+$theme-button-link-text-colour: var(--button-link-text-colour);
+
 
 $themes: (
+        // page settings vars
         nav-background: (
-                darkTheme: $c-grey-dark-contrast,
-                lightTheme: $c-blue,
-        ),
+                darkTheme: $c-charcoal-dark,
+                lightTheme: $c-blue-light
+                ),
         page-background: (
-                darkTheme: $c-dark-nav-background,
+                darkTheme: rgba($c-dark-nav-background,0.98),
                 lightTheme: $c-light-nav-background,
         ),
         page-background-04alpha: (
                 darkTheme: rgba($c-dark-nav-background, 0.4),
                 lightTheme: rgba($c-light-nav-background, 0.4),
         ),
-        font-color: (
+        font-colour: (
                 darkTheme: white,
                 lightTheme: black
         ),
-        font-color-hover: (
+        font-colour-hover: (
                 darkTheme: $c-dark-nav-background,
                 lightTheme: $c-dark-nav-background,
+        ),
+
+        // button settings vars
+              
+  // primary
+        button-primary-background-colour : (
+                darkTheme: $c-blue-bold,
+                lightTheme: $c-blue-bold
+        ),
+        button-primary-text-colour : (
+                darkTheme: white,
+                lightTheme: white
+        ),
+              
+  // secondary
+        button-secondary-background-colour : (
+                darkTheme: $c-blue-mid,
+                lightTheme: $c-blue-mid,
+        ),
+        button-secondary-text-colour : (
+                darkTheme: white,
+                lightTheme: white
+        ),
+                
+  // success
+        button-success-background-colour : (
+                darkTheme: $c-green,
+                lightTheme: $c-green
+        ),
+        button-success-text-colour : (
+                darkTheme: black,
+                lightTheme: black,
+        ),
+                
+  // danger
+        button-danger-background-colour : (
+                darkTheme: $c-darkMode-red-deep,
+                lightTheme: $c-lightMode-red-deep,
+        ),
+        button-danger-text-colour : (
+                darkTheme: white,
+                lightTheme: white
+        ),
+  
+  // warning
+        button-warning-background-colour : (
+                darkTheme: $c-yellow,
+                lightTheme: $c-yellow-mid,
+        ),
+        button-warning-text-colour : (
+                darkTheme: $c-black,
+                lightTheme: $c-black,
+        ),
+        
+  // info
+        button-info-background-colour : (
+                darkTheme: $c-grey-light,
+                lightTheme: $c-grey-light,
+        ),
+        button-info-text-colour : (
+                darkTheme: $c-black,
+                lightTheme: $c-black,
         ),
 );
 

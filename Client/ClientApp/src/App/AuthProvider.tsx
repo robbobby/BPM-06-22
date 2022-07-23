@@ -4,13 +4,45 @@ import { Navigate } from "react-router-dom";
 import RolePermissions from "./RolePermissions";
 import jwtDecode from "jwt-decode";
 import { AppLayoutView } from "../Views/Layout/AppLayoutView";
+import axios, { AxiosResponse } from "axios";
+
+export async function GetToken(): Promise<Token | undefined> {
+    let user = localStorage.getItem('user');
+
+    if (user) {
+        const userToken: Token = JSON.parse(user);
+        if (jwtDecode<ParsedToken>(userToken.accessToken).exp < Date.now() / 1000) {
+            return RefreshToken(userToken);
+        } else {
+            return userToken;
+        }
+    }
+    return undefined;
+}
+
+async function RefreshToken(token: Token): Promise<Token> {
+    const res: AxiosResponse<Token> = await axios({
+        url: process.env.REACT_APP_API_URL + "/api/auth/refreshToken",
+        method: "post",
+        data: {
+            accessToken: token.accessToken,
+            refreshToken: token.refreshToken
+        },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token.accessToken}`
+        }
+    });
+
+    SetToken(res.data);
+    return res.data;
+}
 
 export const AuthContext = React.createContext({});
 export default function AuthProvider(props: any) {
     const cache = JSON.parse(localStorage.getItem('user') || '{}');
     const [user, setUser] = useState(cache);
 
-    console.log(props);
     const login = (user: any) => {
         setUser(user);
         localStorage.setItem('user', JSON.stringify(user));
@@ -32,7 +64,7 @@ export function LogOut() {
     localStorage.removeItem('user');
 }
 
-export function SetToken(token: TokenResponse) {
+export function SetToken(token: Token) {
     const jwtValues = jwtDecode<TokenValues>(token.accessToken);
 
     const user: UserLocalStorage = {
@@ -65,7 +97,7 @@ interface PrivateRouteProps {
     permission: string
 }
 
-export interface TokenResponse {
+export interface Token {
     accessToken: string;
     refreshToken: string;
 }
@@ -80,4 +112,15 @@ interface UserLocalStorage {
     refreshToken?: string;
     accessTokenExpiration?: number;
     role: string;
+}
+
+export type ParsedToken = {
+    role: string;
+    UserId: string
+    AccountId: string
+    nbf: number;
+    exp: number
+    iat: number;
+    iss: string;
+    aud: string;
 }

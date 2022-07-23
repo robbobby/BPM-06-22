@@ -5,47 +5,47 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../../utils/fontAwesomeIcons'
 import { FaIcon, FaIconSize } from "../../utils/fontAwesomeIcons";
 
-export function SideNavBar(props: any) {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
+export function SideNavBar(props: Props) {
+  const showSidebar = () => props.setSidebar(!props.sidebar);
   const [selectedPage, setSelectedPage] = useState('');
 
   useEffect(() => {
     setSelectedPage(window.location.pathname);
-    console.log(selectedPage);
   });
 
+  const sideBarNavItems = [
+
+    {url: "Dashboard", icon : FaIcon.House},
+    {url: "Account", icon : FaIcon.User},
+    {url: "Settings", icon: FaIcon.Gear},
+    {url: "Backlog", icon: FaIcon.TableList},
+    {url: "Todo", icon: FaIcon.ListCheck},
+    // {url: "Logout", icon: FaIcon.House},
+  ]
+
   return (
-    <nav className={sidebar ? `${Style.sidebar} ${Style.active}` : Style.sidebar}>
+    <nav className={props.sidebar ? `${Style.sidebar} ${Style.active}` : Style.sidebar}>
       <button className={Style.hamburger} type="button" onClick={showSidebar}/>
       <ul>
-        <li className={selectedPage === '/dashboard' ? Style.selected : ""}>
-          <Link to="/dashboard">
-            <div>
-              <FontAwesomeIcon className={Style.iconContainer} icon={FaIcon.House} size={FaIconSize.S2}/>
-              <span>Dashboard</span>
-            </div>
-          </Link>
-        </li>
-        <li className={selectedPage === '/backlog' ? Style.selected : ""}>
-          <Link to="/backlog">
-            <div>
-              <FontAwesomeIcon className={Style.iconContainer} icon={FaIcon.TableList} size={FaIconSize.S2}/>
-              <span>
-              Backlog
-            </span>
-            </div>
-          </Link>
-        </li>
-        <li className={selectedPage === '/todo' ? Style.selected : ""}>
-          <Link className={Style.linkContainer} to="/todo">
-            <div>
-              <FontAwesomeIcon className={Style.iconContainer} icon={FaIcon.ListCheck} size={FaIconSize.S2}/>
-              <span>Todo</span>
-            </div>
-          </Link>
-        </li>
+
+        {sideBarNavItems.map((item, index) => {
+          return (
+            <li className={selectedPage === `/${item.url.toLowerCase()}` ? Style.selected : ""}>
+              <Link to={`/${item.url.toLowerCase()}`}>
+                <div>
+                  <FontAwesomeIcon className={Style.iconContainer} icon={item.icon} size={FaIconSize.S1}/>
+                  <span>{item.url}</span>
+                </div>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   );
+}
+
+interface Props {
+  sidebar: boolean;
+  setSidebar: (sidebar: boolean) => void;
 }

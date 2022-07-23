@@ -1,14 +1,11 @@
 @import "./ul";
 @import "./input";
-@import "./../../Button/Button";
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--page-background);
-  color: var(--font-color);
+  background-color: $theme-page-background;
+  color: $theme-font-colour;
 }

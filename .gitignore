@@ -397,6 +397,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .idea/
-Server.Api/postgresql/
+postgresql/
 
 .DS_store

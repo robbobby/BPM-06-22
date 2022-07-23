@@ -4,6 +4,7 @@ using Server.Core.Models.Entities.Entity;
 
 namespace Domain.Repository;
 
+// TODO: Tests for this class
 public class UserRepository : RepositoryBase<User>, IUserRepository {
     private BmpDbContext _dbContext;
 

@@ -5,6 +5,7 @@ using Api;
 using Api.MapperProfiles;
 using Api.Services;
 using Api.Setup;
+using Domain;
 using Domain.Repository;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -19,24 +20,23 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
-    options.SwaggerDoc("v1", new OpenApiInfo
-    {
+    options.SwaggerDoc("v1", new OpenApiInfo {
         Version = "v1",
         Title = "Bpm Server.Api",
         Description = "Bmp Server.Api",
         TermsOfService = new Uri("https://example.com/terms")
     });
     options.DocInclusionPredicate((docName, description) => true);
-    
+
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme {
         Description = "JWT Authorization header using the Bearer scheme.",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
     });
-    
+
     options.DocInclusionPredicate((docName, description) => true);
-    
+
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 
@@ -53,7 +53,9 @@ builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 
-builder.Services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).Assembly });
+builder.Services.AddAutoMapper(new Assembly[] {
+    typeof(AutoMapperProfile).Assembly
+});
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options => {
@@ -77,7 +79,7 @@ builder.Services.AddAuthorization(options => {
 builder.Services.AddAuthorization(options => {
     options.AddPolicy("User", policy => {
         policy.RequireAssertion(context => {
-            return context.User.HasClaim(claim => claim.Type == ClaimTypes.Role && claim.Value == "Admin") 
+            return context.User.HasClaim(claim => claim.Type == ClaimTypes.Role && claim.Value == "Admin")
                 || context.User.HasClaim(claim => claim.Type == ClaimTypes.Role && claim.Value == "User");
         });
     });
@@ -106,16 +108,23 @@ app.UseStaticFiles();
 
 // enable cors
 app.UseCors(corsPolicyBuilder => corsPolicyBuilder
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader()
-);
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+    );
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope()) {
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<BmpDbContext>().Migrate();
+    await context;
+}
 
 app.Run();
 

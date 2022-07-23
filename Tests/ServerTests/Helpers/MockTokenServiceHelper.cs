@@ -39,6 +39,12 @@ public class MockTokenServiceHelper {
                 }
                 ));
         }
+
+            public void Throws<T>(Mock<ITokenService> mockTokenService, T exception) where T : Exception {
+                mockTokenService.Setup(x => x
+                        .GetToken<TokenDto>(It.IsAny<User>(), It.IsAny<string?>()))
+                    .Throws(exception);
+            }
     }
     
     public class MockMethod_RefreshToken {

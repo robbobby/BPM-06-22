@@ -2,6 +2,8 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace Api.Helpers; 
 
+
+// TODO: Tests for this file
 public static class TokenHelper {
     private static readonly JwtSecurityTokenHandler TokenHandler = new JwtSecurityTokenHandler();
     

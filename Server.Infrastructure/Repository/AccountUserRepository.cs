@@ -3,6 +3,8 @@ using Server.Core.Models.Entities.Entity;
 
 namespace Domain.Repository; 
 
+
+// TODO: Tests for this class
 public class AccountUserRepository : RepositoryBase<AccountUser>, IAccountUserRepository {
     private readonly BmpDbContext _dbContext;
     

@@ -36,6 +36,25 @@ public class MockHelper {
 public class MockAccountUserRepositoryHelper {
     public static MockAccountUserRepositoryHelper Instance { get; } = new MockAccountUserRepositoryHelper();
     public MockMethod_GetAllUserAccountsIdsRole GetAllUserAccountIdsRole { get; } = new MockMethod_GetAllUserAccountsIdsRole();
+    public MockMethod_GetAllUserAccountIds GetAllUserAccountIds { get; } = new MockMethod_GetAllUserAccountIds();
+
+    public class MockMethod_GetAllUserAccountIds {
+
+        public void ReturnsIQueryable(Mock<IAccountUserRepository> mockAccountUserRepository) {
+            mockAccountUserRepository.Setup(x =>
+                x.GetAllUserAccountIds(It.IsAny<string>())).Returns(new List<Guid> {
+                    Guid.NewGuid(),
+                    Guid.NewGuid(),
+                    Guid.NewGuid()
+                }.AsQueryable
+                );
+        }
+
+        public void Throws<T>(Mock<IAccountUserRepository> mockAccountUserRepository, T exception) where T : Exception {
+            mockAccountUserRepository.Setup(x =>
+                x.GetAllUserAccountIds(It.IsAny<string>())).Throws(exception);
+        }
+    }
 
     public class MockMethod_GetAllUserAccountsIdsRole {
         public void ReturnsListOfAccountUserIdsRole(Mock<IAccountUserRepository> mockAccountUserRepository) {
@@ -88,7 +107,7 @@ public class MockTokenRepositoryHelper {
 
         }
     }
-    
+
     public class MockMethod_Update {
         public void ReturnsUpdatedToken(Mock<ITokenRepository> mockTokenRepository) {
             mockTokenRepository.Setup(x => x.Update(It.IsAny<Token>()))
@@ -96,7 +115,6 @@ public class MockTokenRepositoryHelper {
         }
     }
 }
-
 
 public class MockProjectServiceHelper {
     public static MockProjectServiceHelper Instance { get; } = new MockProjectServiceHelper();
@@ -120,8 +138,6 @@ public class MockProjectServiceHelper {
             mockProjectService.Setup(x =>
                 x.Create(It.IsAny<ProjectCreateRequest>())).Throws(new Exception());
         }
-
-
     }
 }
 

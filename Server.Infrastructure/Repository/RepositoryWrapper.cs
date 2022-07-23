@@ -10,24 +10,9 @@ namespace Domain.Repository {
             _dbContext = dbContext;
         }
 
-        public IUserRepository Owner {
-            get {
-                if (_owner == null) {
-                    _owner = new UserRepository(_dbContext);
-                }
-                return _owner;
-            }
-        }
+        public IUserRepository Owner => _owner ??= new UserRepository(_dbContext);
 
-        public IAccountRepository Account {
-            get {
-                if (_account == null) {
-                    _account = new AccountRepository(_dbContext);
-                }
-
-                return _account;
-            }
-        }
+        public IAccountRepository Account => _account ??= new AccountRepository(_dbContext);
 
         public void Save() {
             _dbContext.SaveChanges();

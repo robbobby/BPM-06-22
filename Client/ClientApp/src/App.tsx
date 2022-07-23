@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import AuthProvider, { PrivateRoute } from './App/AuthProvider';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Header } from "./Components/Header/Header";
 
 const routeConfigs = [
@@ -9,6 +9,15 @@ const routeConfigs = [
   ...require('./Routes/AuthRoutes').default,
   ...require('./Routes/Routes').default
 ];
+
+function PageNotFound() {
+  // get user from local storage
+  const user = JSON.parse(localStorage.getItem('user')!);
+  if (user) 
+    return <Navigate to="/dashboard"/>;
+  
+  return <Navigate to={'/login'}/>;
+}
 
 function App() {
   // switch between login and signup view
@@ -39,6 +48,7 @@ function App() {
         <BrowserRouter>
           {/*<Header/>*/}
           <Routes>
+            <Route path='*' element={<PageNotFound/>}/>
             {getRoutes()}
           </Routes>
         </BrowserRouter>

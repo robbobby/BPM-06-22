@@ -21,6 +21,7 @@ export function LoginForm(props: Props) {
       password: event.currentTarget.password.value
     }).then((res: AxiosResponse<Token>) => {
       SetToken(res.data);
+      console.log("Before navigate");
       navigate('/dashboard');
     })
       .catch(err => {

@@ -29,8 +29,7 @@ public class ProjectController : ControllerBase {
             return Task.FromResult<IActionResult>(BadRequest(ex.Message));
         }
     }
-    
-    
+
     [HttpGet]
     [Authorize(Policy = "User")]
     public Task<IActionResult> GetAllProjects() {

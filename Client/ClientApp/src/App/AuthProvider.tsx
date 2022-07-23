@@ -39,6 +39,7 @@ async function RefreshToken(token: Token): Promise<Token> {
 }
 
 export const AuthContext = React.createContext({});
+
 export default function AuthProvider(props: any) {
     const cache = JSON.parse(localStorage.getItem('user') || '{}');
     const [user, setUser] = useState(cache);
@@ -62,9 +63,11 @@ export default function AuthProvider(props: any) {
 
 export function LogOut() {
     localStorage.removeItem('user');
+    return <Navigate to="/login"/>;
 }
 
 export function SetToken(token: Token) {
+    console.log(token.accessToken);
     const jwtValues = jwtDecode<TokenValues>(token.accessToken);
 
     const user: UserLocalStorage = {
@@ -73,12 +76,18 @@ export function SetToken(token: Token) {
         accessTokenExpiration: jwtValues.exp,
         role: jwtValues.role
     }
+    
+    
     localStorage.setItem("user", JSON.stringify(user));
 }
 
 export function PrivateRoute(props: PrivateRouteProps) {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user: any = JSON.parse(localStorage.getItem('user')!);
     const layout = props.layout || "App";
+    if (!user) {
+        return <Navigate to="/login"/>;
+    }
+    console.log(user);
     if(RolePermissions.permissions[user.role][props.permission]) {
         switch (layout) { 
             case 'App':

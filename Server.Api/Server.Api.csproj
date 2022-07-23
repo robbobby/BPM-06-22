@@ -33,7 +33,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Server.Application\Server.Application.csproj" />
       <ProjectReference Include="..\Server.Core\Server.Core.csproj" />
       <ProjectReference Include="..\Server.Infrastructure\Server.Infrastructure.csproj" />
     </ItemGroup>

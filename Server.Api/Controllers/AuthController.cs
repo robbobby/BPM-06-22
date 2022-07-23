@@ -27,7 +27,7 @@ public class AuthController : ControllerBase {
             if (user.Result == null) 
                 return Task.FromResult<IActionResult>(Unauthorized());
 
-            var token = _tokenService.GetToken<TokenDto>(user.Result);
+            var token = _tokenService.GetToken<TokenDto>(user.Result).Result;
             return Task.FromResult<IActionResult>(Ok(token));
         } catch (Exception ex) {
             _logger.LogError("Exception: {Ex}", ex);
@@ -41,10 +41,12 @@ public class AuthController : ControllerBase {
             var tokenMapped = _mapper.Map<TokenDto>(tokenRefresh);
             var token = _tokenService.RefreshToken(tokenMapped);
             return Task.FromResult<IActionResult>(Ok(token));
-        } catch (InvalidTokenException) {
+        } catch (InvalidTokenException e) {
+            _logger.LogError(e.Message);
             return Task.FromResult<IActionResult>(Unauthorized("Invalid token"));
         }
-        catch (TokenStillValidException) {
+        catch (TokenStillValidException e) {
+            _logger.LogError(e.Message);
             return Task.FromResult<IActionResult>(Ok("Token still valid"));
         }
         catch (Exception ex) {

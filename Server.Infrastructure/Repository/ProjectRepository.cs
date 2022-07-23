@@ -5,6 +5,7 @@ using Server.Core.Models.Entities.Entity;
 
 namespace Domain.Repository;
 
+// TODO: Tests for this class
 public class ProjectRepository : IProjectRepository {
     private readonly BmpDbContext _dbContext;
     private readonly ILogger<ProjectRepository> _logger;

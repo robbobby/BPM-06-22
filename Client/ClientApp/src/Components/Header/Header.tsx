@@ -3,6 +3,8 @@ import { ThemeButton } from "../ThemeButton/ThemeButton";
 import { LogOut } from "../../App/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Button, { ButtonSize, ButtonVariant } from "../Button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaIcon, FaIconSize } from "../../utils/fontAwesomeIcons";
 
 export function Header() {
   const navigate = useNavigate();
@@ -14,8 +16,8 @@ export function Header() {
   return (
     <div className={Style.header}>
       <div className={Style.logo}>
-          Levity
-      </div>*
+        <FontAwesomeIcon icon={FaIcon.Blog} size={FaIconSize.S3} style={{margin: "8px"}}/>
+      </div>
       <ThemeButton/>
       <nav className={Style.nav}>
         <ul >

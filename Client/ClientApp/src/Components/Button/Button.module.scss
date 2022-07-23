@@ -1,9 +1,10 @@
 @import "../Global";
 
 .base {
+  font-family: inherit;
   border-radius: $radius;
-  font-size: $scale-1;
-  font-weight: 400;
+  font-size: $scale;
+  font-weight: bold;
   padding: 5px;
   text-align: center;
   text-decoration: none;
@@ -11,7 +12,6 @@
   min-width: 200px;
   width: auto;
   border: blue 1px solid;
-
   &:hover {
     cursor: pointer;
   }
@@ -23,42 +23,42 @@
 
 .transparent {
   background-color: transparent;
-  color: var(--font-color);
+  color: $theme-font-colour;
 }
 
 .primary {
-  background-color: var(--button-primary-background-color);
-  color: var(--button-primary-font-color);
+  background-color: $theme-button-primary-bg-colour;
+  color: $theme-button-primary-text-colour;
 }
 
 .secondary {
-  background-color: var(--button-secondary-background-color);
-  color: var(--button-secondary-font-color);
+  background-color: $theme-button-secondary-bg-colour;
+  color: $theme-button-secondary-text-colour;
 }
 
 .success {
-  background-color: var(--button-success-background-color);
-  color: var(--button-success-font-color);
+  background-color: var($theme-button-success-bg-colour);
+  color: $theme-button-success-text-colour;
 }
 
 .danger {
-  background-color: var(--button-danger-background-color);
-  color: var(--button-danger-font-color);
+  background-color: $theme-button-danger-bg-colour;
+  color: $theme-button-danger-text-colour;
 }
 
 .warning {
-  background-color: var(--button-warning-background-color);
-  color: var(--button-warning-font-color);
+  background-color: $theme-button-warning-bg-colour;
+  color: $theme-button-warning-text-colour;
 }
 
 .info {
-  background-color: var(--button-info-background-color);
-  color: var(--button-info-font-color);
+  background-color: $theme-button-info-bg-colour;
+  color: $theme-button-info-text-colour;
 }
 
 .link {
   background-color: transparent;
-  color: var(--link-color);
+  color: $theme-button-link-text-colour;
   border: 0;
 
   &:hover {

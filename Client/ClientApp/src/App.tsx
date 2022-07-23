@@ -15,13 +15,18 @@ function App() {
   const [loginView, setLoginView] = React.useState(true);
 
   let routes = [];
-  console.log(routeConfigs);
 
   function getRoutes() {
     routes = routeConfigs.map(routeConfig => {
       return (
         <Route key={routeConfig.path} path={routeConfig.path} element={
-          routeConfig.permission !== 'Public' ? <PrivateRoute layout={routeConfig.layout} view={routeConfig.view()} permission={routeConfig.permission}/> : routeConfig.view()}
+          routeConfig.permission !== 'Public' ?
+            <PrivateRoute 
+              layout={routeConfig.layout} 
+              view={routeConfig.view()} 
+              permission={routeConfig.permission}
+            /> 
+            : routeConfig.view()}
         />
       )
     })

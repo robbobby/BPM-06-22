@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { SetToken, TokenResponse } from "../../App/AuthProvider";
+import { SetToken, Token } from "../../App/AuthProvider";
 import { Card, CardBorderColour } from "../Card/Card";
 import { useNavigate } from "react-router-dom";
 import { FormEvent } from "react";
@@ -19,7 +19,7 @@ export function LoginForm(props: Props) {
     ApiReq("/api/auth/login", "post", {
       emailAddress: event.currentTarget.email.value,
       password: event.currentTarget.password.value
-    }).then((res: AxiosResponse<TokenResponse>) => {
+    }).then((res: AxiosResponse<Token>) => {
       SetToken(res.data);
       navigate('/dashboard');
     })

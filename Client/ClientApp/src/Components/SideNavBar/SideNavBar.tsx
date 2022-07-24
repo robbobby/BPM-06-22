@@ -50,7 +50,7 @@ export function SideNavBar(props: Props) {
   }
 
   return (
-    <nav className={props.sidebar ? `${Style.sidebar} ${Style.active}` : Style.sidebar}>
+    <nav className={props.sidebar ? Style.sidebar : `${Style.sidebar} ${Style.collapsed}`}>
       <button className={Style.hamburger} type="button" onClick={showSidebar}/>
       <div>
         <ul>

@@ -7,15 +7,15 @@ import { useState } from "react";
 
 export function AppLayoutView(props: Props) {
   useTheme();
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
 
   return (
     <div style={{height: "100%"}}>
     <Header/>
-      <SideNavBar sidebar={sidebar} setSidebar={setSidebar}/>
+      <SideNavBar sidebar={sidebarExpanded} setSidebar={setSidebarExpanded}/>
       <span className={Style.AppLayoutView}>
-        <div className={!sidebar ? Style.pageWithNavExpanded : Style.pageWithNavNotExpanded}>
+        <div className={sidebarExpanded ? Style.pageWithNavExpanded : Style.pageWithNavNotExpanded}>
           {props ? props.view : null}
         </div>
       </span>

@@ -6,5 +6,6 @@ export default [
     view: AuthView,
     permission: 'Public',
     title: 'Login',
+    layout: 'Website'
   }
 ]

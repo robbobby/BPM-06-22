@@ -1,18 +1,3 @@
-/***
- *
- *   CARD
- *   Universal container for grouping UI components together
- *
- *   PROPS
- *   title: title string (optional)
- *   loading: boolean to toggle the loading animation (optional)
- *   shadow: apply a box shadow
- *   center: center align the card
- *   noPadding: remove the padding
- *   restrictWidth: restrict the width of the card on large screens
- *
- **********/
-
 import React from "react";
 import Style from "./Card.module.scss";
 
@@ -23,7 +8,7 @@ export function Card(props: Props) {
     props.shadow ? Style.boxShadow : "",
     props.center ? Style.center : "",
     props.noPadding ? Style.noPadding : "",
-    props.restrictWidth ? Style.restrictWidth : "",
+    Style.restrictWidth,
     props.borderColour ? Style[`border${props.borderColour}`] : "",
   ]
   

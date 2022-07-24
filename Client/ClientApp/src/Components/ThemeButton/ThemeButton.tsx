@@ -8,12 +8,11 @@ export function ThemeButton() {
   const theme = useTheme();
 
   return (
-    <div style={{padding: "10px"}}>
-      <DarkModeSwitch onChange={darkMode.toggle}
+      <DarkModeSwitch onChange={() => {}}
                       checked={darkMode.value}
-                      size={50}
+                      size={25}
                       sunColor={"orange"}
                       moonColor={"blue"}/>
-    </div>
   );
+  
 }

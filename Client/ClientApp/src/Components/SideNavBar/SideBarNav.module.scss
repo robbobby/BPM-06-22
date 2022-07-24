@@ -2,7 +2,7 @@
 
 .sidebar {
   position: fixed;
-  top: 73px;
+  top: 55px;
   min-width: 180px;
   width: 250px;
   height: 100vh;
@@ -104,6 +104,13 @@ a:hover{
 }
 
 .bottomNavItems {
-  bottom: 73px;
+  bottom: 50px;
   position: absolute;
+}
+
+.themeButton {
+  font-size: 1.25em;
+  display: flex;
+  height: 16.25px;
+  align-items: center;
 }

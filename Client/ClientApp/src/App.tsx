@@ -3,6 +3,8 @@ import './App.scss';
 import AuthProvider, { PrivateRoute } from './App/AuthProvider';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Header } from "./Components/Header/Header";
+import { AppLayoutView } from "./Views/Layout/AppLayoutView";
+import { WebsiteLayout } from "./Views/Layout/WebsiteLayout";
 
 const routeConfigs = [
   ...require('./Routes/AccountRoutes').default,
@@ -13,10 +15,21 @@ const routeConfigs = [
 function PageNotFound() {
   // get user from local storage
   const user = JSON.parse(localStorage.getItem('user')!);
-  if (user) 
+  if (user)
     return <Navigate to="/dashboard"/>;
-  
+
   return <Navigate to={'/login'}/>;
+}
+
+function PublicRoute(props: { layout: any, view: JSX.Element }) {
+  switch (props.layout) {
+    case 'App':
+      return <AppLayoutView view={props.view}/>;
+    case "Website":
+      return <WebsiteLayout view={props.view}/>;
+    default:
+      throw new Error(`Unknown layout: ${props.layout}`);
+  }
 }
 
 function App() {
@@ -30,15 +43,21 @@ function App() {
       return (
         <Route key={routeConfig.path} path={routeConfig.path} element={
           routeConfig.permission !== 'Public' ?
-            <PrivateRoute 
-              layout={routeConfig.layout} 
-              view={routeConfig.view()} 
+            <PrivateRoute
+              layout={routeConfig.layout}
+              view={routeConfig.view()}
               permission={routeConfig.permission}
-            /> 
-            : routeConfig.view()}
+            />
+            :
+            <PublicRoute
+              layout={routeConfig.layout}
+              view={routeConfig.view()}
+            />
+        }
         />
-      )
-    })
+      );
+    });
+
     return routes;
   }
 

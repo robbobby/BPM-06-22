@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faClipboardList, faHouse, faListCheck, faTableList, faGear, faUser, faAngleUp, faAngleDown, faAngleLeft, faAngleRight, faBlog } from '@fortawesome/free-solid-svg-icons'
+import { faClipboardList, faHouse, faListCheck, faTableList, faGear, faUser, faAngleUp, faAngleDown, faAngleLeft, faAngleRight, faBlog, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
-library.add( faHouse, faClipboardList, faListCheck, faTableList, faGear, faUser, faAngleUp, faAngleDown, faAngleLeft, faAngleRight, faBlog )
+library.add( faHouse, faClipboardList, faListCheck, faTableList, faGear, faUser, faAngleUp, faAngleDown, faAngleLeft, faAngleRight, faBlog, faArrowRightFromBracket )
 
 export enum FaIcon {
   House = "house",
@@ -16,7 +16,8 @@ export enum FaIcon {
   AngleUp = "angle-up",
   AngleLeft = "angle-left",
   AngleRight = "angle-right",
-  Blog = "blog"
+  Blog = "blog",
+  Logout = "arrow-right-from-bracket"
 }
 
 export enum FaIconSize {

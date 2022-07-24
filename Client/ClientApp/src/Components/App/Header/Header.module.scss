@@ -1,0 +1,54 @@
+@import "../Global";
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 999;
+  background-color: $theme-nav-background;
+  font-weight: 600;
+  box-shadow: 0px 10px 10px rgba(black, 0.05);
+  top: 0;
+  min-height: $scale4;
+  position: fixed;
+  
+
+  a > img {
+    position: absolute;
+    margin-top: -95px;
+    margin-left: -161px;
+    transform: scale(0.3);
+    float: left;
+  }
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+  ul {
+    // algin to the right
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    
+    
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  li {
+    float: right;
+  }
+
+  li a {
+    display: block;
+    padding: 4px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+  }
+    padding: 0 20px;
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FormEvent } from 'react';
 import Button, { ButtonSize } from "../Button/Button";
-import { Card } from "../Card/Card";
+import { Card, CardBorderColour } from "../Card/Card";
 import Style from "./Auth.module.scss";
 
 interface Props {
@@ -34,22 +34,22 @@ export function SignUpForm(props: Props) {
     });
   }
   return (
-    <div>
+    <div className={Style.container}>
       <h1>Sign Up</h1>
-      <Card>
+      <Card shadow={true} borderColour={CardBorderColour.LightOrange} restrictWidth={true} center={true}>
         <form onSubmit={handleSignUpRequest}>
-          <div>
+          <div style={{marginRight: "13px"}}>
             <label>Email</label>
             <input type="text" name="email"/>
           </div>
-          <div>
+          <div style={{marginRight: "13px"}}>
             <label>Password</label>
             <input type="password" name="password"
             />
           </div>
           <span className={Style.buttonContainer}>
             <Button size={ButtonSize.Small} type="submit">Sign up</Button>
-            <Button size={ButtonSize.Small} onClick={() => props.setLoginView(true)}>Login</Button>
+            <Button size={ButtonSize.Small} onClick={() => props.setLoginView(true)}> Back to Login</Button>
           </span>
         </form>
       </Card>

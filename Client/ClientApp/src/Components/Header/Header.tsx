@@ -18,7 +18,6 @@ export function Header() {
       <div className={Style.logo}>
         <FontAwesomeIcon icon={FaIcon.Blog} size={FaIconSize.S3} style={{margin: "8px"}}/>
       </div>
-      <ThemeButton/>
       <nav className={Style.nav}>
         <ul >
           <li>

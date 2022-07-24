@@ -2,7 +2,7 @@
 
 .base {
   position: relative;
-  padding: $scale2;
+  padding: $scale5;
   z-index: 1;
   margin-bottom: $scale2;
   border-radius: $radius;
@@ -103,8 +103,8 @@
 }
 
 .restrictWidth {
-  @media (min-width: $mobile) {
-    max-width: $scale15;
+  @media (max-width: $mobile) {
+    max-width: $scale13;
   }
 }
 

@@ -30,23 +30,23 @@ export function LoginForm(props: Props) {
   }
 
   return (
-    <div>
+    <div className={Style.container} >
       <h1>Login</h1>
       <Card shadow={true} borderColour={CardBorderColour.LightOrange} restrictWidth={true} center={true}>
         <div>
           <form onSubmit={handleLoginRequest}>
-            <div>
+            <div style={{marginRight: "13px"}}>
               <label>Email</label>
               <input type="text" name="email"/>
             </div>
-            <div>
+            <div style={{marginRight: "13px"}}>
               <label>Password</label>
               <input type="password" name="password"/>
             </div>
-            <span className={Style.buttonContainer}>
+            <div className={Style.buttonContainer}>
               <Button size={ButtonSize.Small} variant={ButtonVariant.Primary} type="submit">Sign in</Button>
-              <Button size={ButtonSize.Small} onClick={() => props.setLoginView(false)}>Back to login</Button>
-            </span>
+              <Button size={ButtonSize.Small} onClick={() => props.setLoginView(false)}>Create Account</Button>
+            </div>
           </form>
         </div>
       </Card>

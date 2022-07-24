@@ -7,7 +7,7 @@ import { AppLayoutView } from "../Views/Layout/AppLayoutView";
 import axios, { AxiosResponse } from "axios";
 
 export async function GetToken(): Promise<Token | undefined> {
-    let user = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
 
     if (user) {
         const userToken: Token = JSON.parse(user);

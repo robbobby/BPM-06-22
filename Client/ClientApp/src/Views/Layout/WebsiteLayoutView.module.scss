@@ -1,4 +1,4 @@
-@import "./src/Components/Global";
+// 2 column flexbox layout
 .AppLayoutView {
   display: flex;
   flex-direction: row;
@@ -6,23 +6,16 @@
 }
 
 .pageWithNavExpanded {
-  
   margin-top: 70px;
   margin-left: 270px;
   
   width: 100%;
-  transition: margin-left 0.1s ease-in-out;
-  @media (max-width: $mobile) {
-    margin-left: 70px;
-  }
+  transition: margin-left 0.3s ease-in-out;
 }
 
 .pageWithNavNotExpanded {
   margin-left: 70px;
   margin-top: 70px;
   width: 100%;
-  transition: margin-left 0.1s ease-in-out;
-  @media (max-width: $mobile) {
-    margin-left: 70px;
-  }
+  transition: margin-left 0.2s ease-in-out;
 }

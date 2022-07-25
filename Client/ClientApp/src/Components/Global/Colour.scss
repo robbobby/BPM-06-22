@@ -102,6 +102,10 @@ $theme-button-warning-text-colour: var(--button-warning-text-colour);
 $theme-button-info-text-colour: var(--button-info-text-colour);
 $theme-button-link-text-colour: var(--button-link-text-colour);
 
+$c-tinted-hover-background: var(--c-tinted-hover-background);
+
+$nav-selected-colour: var(--theme-nav-selected-colour);
+$theme-nav-selected-colour: var(--theme-nav-hover-colour);
 
 $themes: (
         // page settings vars
@@ -114,7 +118,7 @@ $themes: (
                 lightTheme: $c-light-nav-background,
         ),
         page-background-04alpha: (
-                darkTheme: rgba($c-dark-nav-background, 0.4),
+                darkTheme: rgba(black, 0.1),
                 lightTheme: rgba($c-light-nav-background, 0.4),
         ),
         font-colour: (
@@ -125,6 +129,21 @@ $themes: (
                 darkTheme: $c-dark-nav-background,
                 lightTheme: $c-dark-nav-background,
         ),
+        c-tinted-hover-background: (
+                darkTheme: rgba(black, 0.2),
+                lightTheme: rgba(black, 0.15),
+        ),
+        
+        // nav
+        theme-nav-selected-colour: (
+                darkTheme: rgba($c-mulberry-dark, 0.4),
+                lightTheme: rgba($c-purple-dark, 0.3),
+        ),
+        theme-nav-hover-color: (
+                darkTheme: $c-dark,
+                lightTheme: $c-blue-mid
+        ),
+        
 
         // button settings vars
               

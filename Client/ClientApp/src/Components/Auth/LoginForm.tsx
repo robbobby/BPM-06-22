@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { SetToken, Token } from "../../App/AuthProvider";
+import { SetLocalStorageUserFromToken, Token } from "../../App/AuthProvider";
 import { Card, CardBorderColour } from "../Card/Card";
 import { useNavigate } from "react-router-dom";
 import { FormEvent } from "react";
@@ -20,7 +20,7 @@ export function LoginForm(props: Props) {
       emailAddress: event.currentTarget.email.value,
       password: event.currentTarget.password.value
     }).then((res: AxiosResponse<Token>) => {
-      SetToken(res.data);
+      SetLocalStorageUserFromToken(res.data);
       console.log("Before navigate");
       navigate('/dashboard');
     })

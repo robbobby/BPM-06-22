@@ -38,14 +38,12 @@ export function SideNavBar(props: Props) {
 
   function setNavItems(navItems: NavItems[]) {
     return navItems.map((item: NavItems) =>
-      <li className={selectedPage === `/${item.url.toLowerCase()}` ? Style.selected : ""}>
-        <Link onClick={item.action} to={`/${item.url.toLowerCase()}`}>
-          <div>
-            <FontAwesomeIcon className={Style.iconContainer} icon={item.icon} size={FaIconSize.S1}/>
-            <span>{item.url}</span>
-          </div>
-        </Link>
-      </li>
+      <Link onClick={item.action} to={`/${item.url.toLowerCase()}`} className={selectedPage === `/${item.url.toLowerCase()}` ? `${Style.selected + " " + Style.Link}` : `${Style.Link}`}>
+        <li >
+          <FontAwesomeIcon className={Style.iconContainer} icon={item.icon} size={FaIconSize.S1}/>
+          <span>{item.url}</span>
+        </li>
+      </Link>
     )
   }
 
@@ -53,7 +51,7 @@ export function SideNavBar(props: Props) {
     <nav className={props.sidebar ? Style.sidebar : `${Style.sidebar} ${Style.collapsed}`}>
       <button className={Style.hamburger} type="button" onClick={showSidebar}/>
       <div>
-        <ul>
+        <ul style={{padding: "0", margin: "0"}}>
           {setNavItems(topNavItems)}
         </ul>
       </div>
@@ -62,7 +60,7 @@ export function SideNavBar(props: Props) {
         <ul>
           <li>
             <div onClick={darkMode.toggle} className={Style.themeButton}>
-              <div style={{width: "30px", paddingLeft: "2.5px"}}>
+              <div className={Style.iconContainer} style={{width: "30px", paddingLeft: "4px", marginRight: "15px"}}>
                 <ThemeButton/>
               </div>
               <span className={Style.themeSpan}>Theme</span>

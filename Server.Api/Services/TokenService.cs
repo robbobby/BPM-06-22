@@ -88,20 +88,20 @@ public class TokenService : ITokenService {
     }
 
     public async Task<T> GetToken<T>(User user, string? accountId = null) {
-        var token = await GenerateToken(user);
+        var token = await GenerateToken(user, accountId);
         return _mapper.Map<T>(token);
     }
 
     private string GetAccessToken(User user, string? accountId) {
-        accountId = accountId == null ? accountId : user.DefaultAccount.ToString();
+        accountId = accountId != null ? accountId : user.DefaultAccount.ToString();
 
-        var accountUser = user.AccountUsers.Find(au => au.AccountId.ToString().Equals(accountId));
+        var accountUser = user.AccountUsers?.Find(au => au.AccountId.ToString().Equals(accountId));
         if (accountUser == null) {
             var accountUsersDb = _accountUserRepository.GetAllUserAccountsIdsRole(user.Id.ToString()).ToList();
             if (accountUsersDb.Count == 0) {
                 throw new AccountUserNotFoundException();
             }
-            var accountUsers = accountUsersDb.Find(au => au.AccountId == accountId);
+            var accountUsers = accountUsersDb.Find(au => au.AccountId.ToString() == accountId);
             accountUser = _mapper.Map<AccountUser>(accountUsers);
 
             if (accountUser == null) {
@@ -141,7 +141,7 @@ public class TokenService : ITokenService {
             User = user,
             AccountId = accountId
         };
-        _tokenRepository.Create(token);
+        _tokenRepository.Update(token);
         _tokenRepository.SaveChanges();
 
         return token;

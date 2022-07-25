@@ -6,5 +6,6 @@ namespace Server.Core.Interfaces.Service;
 
 public interface IUserService {
     Task<TokenDto> CreateUser(UserRequest userRequest);
-    Task<IQueryable<Guid>> GetAllUserAccountIds(string? userId);
+    Task<IQueryable<AccountUserIdsRole>> GetUserAccounts(string? userId);
+    User? GetUser(string? userId);
 }

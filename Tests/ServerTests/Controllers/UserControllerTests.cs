@@ -68,7 +68,7 @@ public class UserControllerTests {
     [Fact(DisplayName = "GetAllUserAccountAccountIds() - Success - Returns Ok()"), Trait("User Controller", "GetAllUserAccountIds")]
     public async Task GetAllUserAccountIds_Success() {
         ResetMocks();
-        MockHelper.UserService.GetAllUserAccountIds.ReturnsListOfAccountIds(_mockUserService);
+        MockHelper.UserService.GetUserAccounts.ReturnsListOfAccountIds(_mockUserService);
 
         var httpContext = new DefaultHttpContext();
         MockHelper.HttpContext.SetAuthHeader(httpContext);
@@ -80,7 +80,7 @@ public class UserControllerTests {
         };
 
         // mock TokenHelper
-        var result = await _sut.GetAllUserAccountIds();
+        var result = await _sut.GetUserAccounts();
 
         var response = result.Should().BeOfType<OkObjectResult>().Subject;
         response.StatusCode.Should().Be(200);
@@ -93,7 +93,7 @@ public class UserControllerTests {
     [Fact(DisplayName = "GetAllUserAccountAccountIds() - Failure - Throws Generic Exception - Returns BadRequest()"), Trait("User Controller", "GetAllUserAccountIds")]
     public async Task GetAllUserAccountIds_Failure() {
         ResetMocks();
-        MockHelper.UserService.GetAllUserAccountIds.ThrowsGenericException(_mockUserService);
+        MockHelper.UserService.GetUserAccounts.ThrowsGenericException(_mockUserService);
 
         var httpContext = new DefaultHttpContext();
         MockHelper.HttpContext.SetAuthHeader(httpContext);
@@ -104,7 +104,7 @@ public class UserControllerTests {
             }
         };
         
-        var result = await _sut.GetAllUserAccountIds();
+        var result = await _sut.GetUserAccounts();
         
         var response = Assert.IsType<BadRequestObjectResult>(result);
         response.StatusCode.Should().Be(400);

@@ -1,10 +1,11 @@
 import axios from "axios";
-import { SetToken, GetToken, Token } from "../../App/AuthProvider";
+import { SetLocalStorageUserFromToken, GetToken, Token } from "../../App/AuthProvider";
 
 export async function ApiReq(url: string, method: string = "get", data?: any) {
   const userToken: Token | undefined = await GetToken();
 
-  return axios({
+  console.log(data);
+  const request =  axios({
     url: process.env.REACT_APP_API_URL + url,
     method: method,
     data: data,
@@ -13,4 +14,8 @@ export async function ApiReq(url: string, method: string = "get", data?: any) {
       'Authorization': `Bearer ${userToken?.accessToken}`
     }
   });
+
+  console.log(request);
+  
+  return request;
 }

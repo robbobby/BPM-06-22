@@ -1,10 +1,20 @@
 @import '../Global';
 
 .base {
+  background-color: transparent;
   border: solid 1px;
   border-radius: 10px;
-  padding: 0.2em 0.5em;
+  padding: 0.2em 0.5em ;
   font-weight: 600;
+}
+
+button {
+  font-family: monospace !important;
+}
+
+.asButton:hover {
+  cursor: pointer;
+  background-color: $c-tinted-hover-background;
 }
 
 .darkgrey {
@@ -98,13 +108,13 @@
 }
 
 .large {
-  font-size: 1.5em;
+  font-size: 1.5em !important;
 }
 
 .medium {
-  font-size: 1.2em;
+  font-size: 1.2em !important;
 }
 
 .small {
-  font-size: 0.8em;
+  font-size: 0.8em !important;;
 }

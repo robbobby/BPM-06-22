@@ -1,27 +1,37 @@
 import Style from "./pill.module.scss";
-import PropTypes from "prop-types";
+import React from "react";
+
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  size: PillSizes;
+  color: PillColours;
+  text?: string;
+  children?: React.ReactNode;
+  asButton?: boolean;
+}
 
 export function Pill(props: Props) {
-
   const style = [
     Style.base,
     props.color ? Style[props.color] : "",
     props.size ? Style[props.size] : "",
+    props.asButton ? Style.asButton : "",
   ]
 
+  if (props.asButton) {
+    return (
+      <button className={style.join(" ")} {...props}>
+        {props.text}
+        {props.children}
+      </button>
+    );
+  }
+  
   return (
     <span className={style.join(" ")}>
       {props.text}
       {props.children}
     </span>
   );
-}
-
-type Props = {
-  size: PillSizes,
-  color: PillColours,
-  text?: string
-  children?: React.ReactNode
 }
 
 export enum PillSizes {

@@ -5,6 +5,7 @@ import RolePermissions from "./RolePermissions";
 import jwtDecode from "jwt-decode";
 import { AppLayoutView } from "../Views/Layout/AppLayoutView";
 import axios, { AxiosResponse } from "axios";
+import { ApiReq } from "../Components/Hooks/ApiReq";
 
 export async function GetToken(): Promise<Token | undefined> {
     const user = localStorage.getItem('user');
@@ -18,6 +19,17 @@ export async function GetToken(): Promise<Token | undefined> {
         }
     }
     return undefined;
+}
+
+export async function SwitchAccounts(accountId: string) {
+    const token = await GetToken();
+    if (token) {
+        
+        ApiReq("/api/auth/switchAccount", "post", accountId).then(res => {
+            SetLocalStorageUserFromToken(res.data);
+            window.location.reload();
+        });
+    }
 }
 
 async function RefreshToken(token: Token): Promise<Token> {
@@ -34,7 +46,7 @@ async function RefreshToken(token: Token): Promise<Token> {
         }
     });
 
-    SetToken(res.data);
+    SetLocalStorageUserFromToken(res.data);
     return res.data;
 }
 
@@ -66,7 +78,7 @@ export function LogOut() {
     return <Navigate to="/login"/>;
 }
 
-export function SetToken(token: Token) {
+export function SetLocalStorageUserFromToken(token: Token) {
     console.log(token.accessToken);
     const jwtValues = jwtDecode<TokenValues>(token.accessToken);
 
@@ -87,7 +99,6 @@ export function PrivateRoute(props: PrivateRouteProps) {
     if (!user) {
         return <Navigate to="/login"/>;
     }
-    console.log(user);
     if(RolePermissions.permissions[user.role][props.permission]) {
         switch (layout) { 
             case 'App':

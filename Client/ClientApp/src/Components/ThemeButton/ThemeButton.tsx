@@ -3,7 +3,11 @@ import { useTheme } from "../Hooks/UseTheme";
 import './ThemeButton.scss'
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 
-export function ThemeButton() {
+
+interface Props extends React.HTMLAttributes<HTMLBaseElement> {
+}
+
+export function ThemeButton(props: Props) {
   const darkMode = useDarkMode(true);
   const theme = useTheme();
 

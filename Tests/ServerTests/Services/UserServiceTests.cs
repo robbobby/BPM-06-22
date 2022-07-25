@@ -74,7 +74,7 @@ public class UserServiceTests {
         MockHelper.AccountUserRepository.GetAllUserAccountIds.ReturnsIQueryable(_mockAccountUserRepository);
         
         SetSut();
-        var result = _sut.GetAllUserAccountIds(TestModelHelper.Ids.UserGuid.ToString());
+        var result = _sut.GetUserAccounts(TestModelHelper.Ids.UserGuid.ToString());
         
         result.Result.Should().NotBeNull();
         result.Result.Should().BeAssignableTo<IEnumerable<Guid>>();
@@ -89,6 +89,6 @@ public class UserServiceTests {
         
         SetSut();
         
-        Assert.ThrowsAsync<Exception>(() => _sut.GetAllUserAccountIds(TestModelHelper.Ids.UserGuid.ToString()));
+        Assert.ThrowsAsync<Exception>(() => _sut.GetUserAccounts(TestModelHelper.Ids.UserGuid.ToString()));
     }
 }

@@ -20,9 +20,10 @@ public class AccountUserRepository : RepositoryBase<AccountUser>, IAccountUserRe
     public IQueryable<AccountUserIdsRole> GetAllUserAccountsIdsRole(string? userId) {
         return _dbContext.AccountUsers.Where(x => x.UserId.ToString() == userId)
             .Select(x => new AccountUserIdsRole {
-                AccountId = x.AccountId.ToString(),
-                UserId = x.UserId.ToString(),
-                Role = x.Role.ToString()
+                AccountId = x.AccountId,
+                Name = x.Account.Name,
+                UserId = x.UserId,
+                Role = x.Role
             });
     }
 }

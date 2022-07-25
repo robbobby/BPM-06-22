@@ -21,7 +21,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class, ID
         return _dbContext.Set<T>().Where(expression).AsNoTracking();
     }
 
-    public void Create(T entity) {
+    public virtual void Create(T entity) {
         _dbContext.Set<T>().Add(entity);
     }
 

@@ -1,10 +1,11 @@
 @import '../Global';
 
 .sidebar {
+  padding-left: $scale-4;
   position: fixed;
   top: 55px;
   min-width: 180px;
-  width: 250px;
+  width: 200px;
   height: 100vh;
   margin-right: 200px;
   background-color: $theme-nav-background;
@@ -18,7 +19,6 @@
   min-width: 55px;
   width: 55px !important;
   li {
-    width: 50px;
     transition: width 400ms ease-out;
   }
 }
@@ -30,35 +30,26 @@
 
 .sidebar li {
   padding: $scale-3;
-  list-style: none;
   width: 90%;
-  vertical-align: middle;
-  display: inline-block;
-  line-height: $scale-4;
-  span {
-    padding: $scale;
-  }
 }
 
-.sidebar li:hover {
+.Link {
+  font-size: $scale1;
+  width: 95%;
+  display: inline-block;
+  white-space: nowrap;
+  line-height: $scale-4;
+}
+
+.Link:hover {
   background-color: var(--page-background-04alpha);
   border-radius: 20px;
   cursor: pointer;
 }
 
-.sidebar li a {
-  font-size: $scale1;
+a {
   text-decoration: none;
-  display: inline;
-  white-space: nowrap;
-  a:hover {
-    transition: all 20s ease-out;
-    color: black;
-  }
-}
-
-a:hover{
-  background-color: transparent !important;
+  color: $theme-font-colour;
 }
 
 .hamburger {
@@ -95,12 +86,12 @@ a:hover{
 
 .iconContainer {
   width: 30px;
+  margin-right: 17px;
 }
 
 .selected {
-  background-color: var(--page-background);
+  background-color: $nav-selected-colour;
   border-radius: 20px;
-  vertical-align: top;
 }
 
 .bottomNavItems {

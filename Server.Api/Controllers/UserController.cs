@@ -19,11 +19,12 @@ public class UserController : ControllerBase {
 
     [Authorize(Policy = "User")]
     [HttpGet]
-    public Task<IActionResult> GetAllUserAccountIds() {
+    public Task<IActionResult> GetUserAccounts() {
         try {
+            _logger.LogError("GetUserAccounts");
             var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             var userId = TokenHelper.GetUserIdFromToken(token);
-            var accountIds = _userService.GetAllUserAccountIds(userId);
+            var accountIds = _userService.GetUserAccounts(userId);
             return Task.FromResult<IActionResult>(Ok(accountIds.Result));
         } catch (Exception ex) {
             _logger.LogError(ex, "Error in GetAllUserAccountIds");

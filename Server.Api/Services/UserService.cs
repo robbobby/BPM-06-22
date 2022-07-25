@@ -50,7 +50,11 @@ public class UserService : IUserService {
         return await _tokenService.GetToken<TokenDto>(user);
     }
     
-    public Task<IQueryable<Guid>> GetAllUserAccountIds(string? userId) {
-        return Task.FromResult(_accountUserRepository.GetAllUserAccountIds(userId));
+    public Task<IQueryable<AccountUserIdsRole>> GetUserAccounts(string? userId) {
+        return Task.FromResult(_accountUserRepository.GetAllUserAccountsIdsRole(userId));
+    }
+
+    public User? GetUser(string? userId) {
+        return _userDb.FindByCondition(user => userId != null && user.Id == Guid.Parse(userId)).FirstOrDefault();
     }
 }

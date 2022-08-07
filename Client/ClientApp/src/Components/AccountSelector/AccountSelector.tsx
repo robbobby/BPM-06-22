@@ -1,8 +1,8 @@
-import { ApiReq } from "../Hooks/ApiReq";
+import { ApiReq } from "../../Utils/Hooks/ApiReq";
 import React from "react";
 import { Pill, PillColours, PillSizes } from "../Pill/Pill";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaIcon, FaIconSize } from "../../utils/fontAwesomeIcons";
+import { FaIcon, FaIconSize } from "../../Utils/fontAwesomeIcons";
 import Style from './AccountSelector.module.scss'
 import axios from "axios";
 import { SwitchAccounts } from "../../App/AuthProvider";

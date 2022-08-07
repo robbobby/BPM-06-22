@@ -5,7 +5,7 @@ import RolePermissions from "./RolePermissions";
 import jwtDecode from "jwt-decode";
 import { AppLayoutView } from "../Views/Layout/AppLayoutView";
 import axios, { AxiosResponse } from "axios";
-import { ApiReq } from "../Components/Hooks/ApiReq";
+import { ApiReq } from "../Utils/Hooks/ApiReq";
 
 export async function GetToken(): Promise<Token | undefined> {
     const user = localStorage.getItem('user');

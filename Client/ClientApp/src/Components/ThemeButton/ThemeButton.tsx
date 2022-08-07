@@ -1,5 +1,5 @@
 import useDarkMode from "use-dark-mode";
-import { useTheme } from "../Hooks/UseTheme";
+import { useTheme } from "../../Utils/Hooks/UseTheme";
 import './ThemeButton.scss'
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 

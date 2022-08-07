@@ -4,7 +4,7 @@ import { LogOut } from "../../App/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Button, { ButtonSize, ButtonVariant } from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaIcon, FaIconSize } from "../../utils/fontAwesomeIcons";
+import { FaIcon, FaIconSize } from "../../Utils/fontAwesomeIcons";
 import { AccountSelector } from "../AccountSelector/AccountSelector";
 
 export function Header() {

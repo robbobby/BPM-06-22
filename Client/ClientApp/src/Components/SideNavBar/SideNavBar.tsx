@@ -2,8 +2,8 @@ import { MouseEventHandler, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Style from './SideBarNav.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '../../utils/fontAwesomeIcons'
-import { FaIcon, FaIconSize } from "../../utils/fontAwesomeIcons";
+import '../../Utils/fontAwesomeIcons'
+import { FaIcon, FaIconSize } from "../../Utils/fontAwesomeIcons";
 import AuthProvider, { LogOut } from "../../App/AuthProvider";
 import { ThemeButton } from "../ThemeButton/ThemeButton";
 import useDarkMode from "use-dark-mode";

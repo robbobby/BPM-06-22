@@ -1,7 +1,7 @@
 import React from "react";
 import Style from './Accordion.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaIcon, FaIconSize } from "../../utils/fontAwesomeIcons";
+import { FaIcon, FaIconSize } from "../../Utils/fontAwesomeIcons";
 import { Pill, PillColours, PillSizes } from "../Pill/Pill";
 
 export function Accordion(props: Props) {

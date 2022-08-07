@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 export default function AccountView() {
   return (
     <div>

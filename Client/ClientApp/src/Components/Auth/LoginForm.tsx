@@ -3,7 +3,7 @@ import { SetLocalStorageUserFromToken, Token } from "../../App/AuthProvider";
 import { Card, CardBorderColour } from "../Card/Card";
 import { useNavigate } from "react-router-dom";
 import { FormEvent } from "react";
-import { ApiReq } from "../Hooks/ApiReq";
+import { ApiReq } from "../../Utils/Hooks/ApiReq";
 import Button, { ButtonSize, ButtonVariant } from "../Button/Button";
 import Style from "./Auth.module.scss";
 

@@ -25,14 +25,12 @@ export function DashboardView(props: any) {
     const [projects, setProjects] = React.useState<Project[]>([]);
     const [dirty, setDirty] = React.useState(false);
 
-    // use effect axios get to server/api/getAllProjects
     React.useEffect(() => {
         ApiReq('/api/Project/GetAllProjects', 'get')
             .then((res) => {
                 setProjects(res.data);
                 setIsLoading(false);
                 setDirty(false);
-                console.log(res.data);
             });
     }, [dirty]);
 
